@@ -65,14 +65,11 @@ method, then by model family:
 |---|---|---|
 | `training_scripts/sft/` | Supervised fine-tuning | `train_sft_llama.py`, `train_sft_gemma.py`, `train_sft_qwen3.py` |
 | `training_scripts/orpo/` | ORPO (preference optimization, no reference model) | `train_orpo_llama.py`, `train_orpo_gemma.py`, `train_orpo_qwen3.py` |
-| `training_scripts/dpo/` | DPO / KTO | `train_dpo.py`, `train_kto_gemma.py`, `train_kto (1).py` |
 | `training_scripts/ra-sft/` | Reasoning-augmented SFT (chain-of-thought) | `train_sft_cot_llama.py`, `train_sft_cot_gemma.py`, `train_sft_cot_qwen3.py` |
-| `training_scripts/quantization_experiments/` | LoRA / QLoRA / OSFT variants | `train_sft_llama_lora.py`, `train_sft_llama_qlora.py`, `train_sft_gemma_qlora.py`, `train_sft_qwen3_qlora.py`, `train_sft_llama_osft.py`, `train_sft_osft.py` |
-
 Datasets live in `training_datasets/`:
 
 - `safety_sft_dataset.jsonl` — `{"instruction", "input", "output"}` (SFT)
-- `safety_orpo_dataset.jsonl` — `{"prompt", "chosen", "rejected"}` (ORPO/DPO/KTO)
+- `safety_orpo_dataset.jsonl` — `{"prompt", "chosen", "rejected"}` (ORPO)
 - `training_data.jsonl` — `{"instruction", "input", "output", "reasoning"}` (RA-SFT/CoT)
 
 Preprocessing for the SFT and ORPO datasets is in
