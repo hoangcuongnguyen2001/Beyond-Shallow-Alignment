@@ -5,7 +5,7 @@ Repository for the 2026 EMNLP Main Conference paper "Beyond Shallow Alignment: H
 
 
 
-[Paper PDF](<_ARR_May__Martin__Beyond_Shallow_Alignment%20(3).pdf>) · [Reproduction guide](PIPELINE.md) · [Models](https://huggingface.co/collections/HoangCuongNguyen/emnlp-2026-post-training-analysis)
+[Paper PDF](<_ARR_May__Martin__Beyond_Shallow_Alignment%20(3).pdf>) · [Reproduction guide](PIPELINE.md) · [![Hugging Face Collections](https://shields.io)](https://huggingface.co/collections/HoangCuongNguyen/emnlp-2026-post-training-analysis)
 
 > **Warning:** this paper and repository discuss and evaluate harmful prompts for research purposes.
 
