@@ -44,7 +44,7 @@ supervision that is independent of architecture.
 *Figure 2 (top): normalized refusal-direction magnitude per layer, per training
 objective. Figure 3 (bottom): normalized causal effect of activation patching
 per layer, per training objective. Both figures reproduced from the paper
-(Sections 4.3–4.4).*
+(Sections 4.3–4.4), for Llama-3.1-8B, Gemmma-2-9B, and Qwen3-8B respectively.*
 
 ## The alignment trilemma
 
