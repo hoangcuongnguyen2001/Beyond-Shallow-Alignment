@@ -2,7 +2,7 @@
 ## **Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits and Steering Robustness**
 
 Repository for the 2026 EMNLP Main Conference paper "Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness"
-Hoang Cuong Nguyen, Mark Dras, Usman Naseem — Macquarie University, Sydney, Australia
+
 
 
 [Paper PDF](<_ARR_May__Martin__Beyond_Shallow_Alignment%20(3).pdf>) · [Reproduction guide](PIPELINE.md)
