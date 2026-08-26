@@ -1,0 +1,182 @@
+python mmlu_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path results/phase3/gemma-sft/iti_probes.pt \
+  --target_heads 37:15 38:15 \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 5 10 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-sft
+
+(main) root@C.36734649:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path results/phase3/gemma-sft/iti_probes.pt \
+  --target_heads 37:15 38:15 \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 5 10 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-sft
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Loading tokenizer: models/gemma-sft
+Loading model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 111.77it/s]
+MMLU ITI alpha=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:00<00:00,  3.33it/s]
+alpha=5.0: accuracy=0.5300 (106/200)
+MMLU ITI alpha=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:00<00:00,  3.29it/s]
+alpha=10.0: accuracy=0.5350 (107/200)
+Saved → results/mmlu_iti/gemma-sft/gemma-sft_mmlu_iti_alphas_5p0_10p0.json
+
+root@C.37724022:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-orpo \
+  --model_name gemma-orpo \
+  --probe_path iti_probes_head12.pt \
+  --target_heads 40:12  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 0 -5 -10 -15 -20\
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Model family: gemma
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 112.03it/s]
+Loading ITI probes: iti_probes_head12.pt
+MMLU alpha=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:31<00:00,  3.16s/it]
+alpha=0.0: accuracy=0.4800 (96/200)
+MMLU alpha=-5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:57<00:00,  3.29s/it]
+alpha=-5.0: accuracy=0.4750 (95/200)
+MMLU alpha=-10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:59<00:00,  3.30s/it]
+alpha=-10.0: accuracy=0.4700 (94/200)
+MMLU alpha=-15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:03<00:00,  3.32s/it]
+alpha=-15.0: accuracy=0.4600 (92/200)
+MMLU alpha=-20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:52<00:00,  3.26s/it]
+alpha=-20.0: accuracy=0.4750 (95/200)
+Saved -> results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_generate_alphas_0p0_neg5p0_neg10p0_neg15p0_neg20p0.json
+
+(main) root@C.37717707:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-orpo \
+  --model_name gemma-orpo \
+  --probe_path iti_probes_head12.pt \
+  --target_heads 40:12  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 15 20 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Model family: gemma
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 193.95it/s]
+Loading ITI probes: iti_probes_head12.pt
+MMLU alpha=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:39<00:00,  2.00it/s]
+alpha=15.0: accuracy=0.4000 (80/200)
+MMLU alpha=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:37<00:00,  2.06it/s]
+alpha=20.0: accuracy=0.4050 (81/200)
+Saved -> results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_generate_alphas_15p0_20p0.json
+(main) root@C.37717707:/workspace$ python mmlu_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12    --mmlu_path datasets/mmlu_200.jsonl   --alphas -15 -20   --batch_size 1   --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Model family: gemma
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 199.14it/s]
+Loading ITI probes: iti_probes_head12.pt
+MMLU alpha=-15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:39<00:00,  2.02it/s]
+alpha=-15.0: accuracy=0.3650 (73/200)
+MMLU alpha=-20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:37<00:00,  2.05it/s]
+alpha=-20.0: accuracy=0.3600 (72/200)
+Saved -> results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_generate_alphas_neg15p0_neg20p0.json
+
+(main) root@C.36791062:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-orpo \
+  --model_name gemma-orpo \
+  --probe_path iti_probes_head12.pt \
+  --target_heads 40:12  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 15 20 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 185.15it/s]
+MMLU ITI alpha=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:10<00:00,  2.83it/s]
+alpha=0.0: accuracy=0.3650 (73/200)
+Saved → results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_alphas_0p0.json
+
+
+(main) root@C.36791062:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path results/phase3/gemma-sft/iti_probes_layer40.pt \
+  --target_heads 40:14  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 0 5 10 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-sft
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Loading tokenizer: models/gemma-sft
+Loading model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 171.35it/s]
+MMLU ITI alpha=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:05<00:00,  3.06it/s]
+alpha=0.0: accuracy=0.5500 (110/200)
+MMLU ITI alpha=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:03<00:00,  3.13it/s]
+alpha=5.0: accuracy=0.5500 (110/200)
+MMLU ITI alpha=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:03<00:00,  3.13it/s]
+alpha=10.0: accuracy=0.5450 (109/200)
+Saved → results/mmlu_iti/gemma-sft/gemma-sft_mmlu_iti_alphas_0p0_5p0_10p0.json
+
+python mmlu_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path iti_probes_layer40.pt \
+  --target_heads 40:14  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 15 20 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-sft
+python mmlu_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path iti_probes_layer40.pt \
+  --target_heads 40:14  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas 15 20 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-sft
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Loading tokenizer: models/gemma-sft
+Loading model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 182.32it/s]
+MMLU ITI alpha=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:01<00:00,  3.25it/s]
+alpha=15.0: accuracy=0.5450 (109/200)
+MMLU ITI alpha=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:00<00:00,  3.29it/s]
+alpha=20.0: accuracy=0.5350 (107/200)
+Saved → results/mmlu_iti/gemma-sft/gemma-sft_mmlu_iti_alphas_15p0_20p0.json
+
+(main) root@C.37717707:/workspace$ python mmlu_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12    --mmlu_path datasets/mmlu_200.jsonl   --alphas 0   --batch_size 1   --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Model family: gemma
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 204.88it/s]
+Loading ITI probes: iti_probes_head12.pt
+MMLU alpha=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:39<00:00,  2.01it/s]
+alpha=0.0: accuracy=0.3750 (75/200)
+Saved -> results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_generate_alphas_0p0.json

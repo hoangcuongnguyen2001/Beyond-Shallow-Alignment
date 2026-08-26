@@ -1,0 +1,31 @@
+(main) root@C.45131404:/workspace$ python actadd_vectors.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-ra-sft/directions.pt   --peak_layer 26   --target_layers 31 24 25 26 27   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-ra-sft
+Loading tokenizer: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 199.07it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-ra-sft/directions.pt
+Saved steering vector → results/phase3/vectors/qwen3-ra-sft_layer26_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:34<00:00,  4.97s/it]
+MMLU Accuracy: 0.6450
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:22<00:00,  4.91s/it]
+MMLU Accuracy: 0.6250
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [15:53<00:00,  4.77s/it]
+MMLU Accuracy: 0.6450
+
+Running MMLU with α=15.0
+MMLU α=15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [15:58<00:00,  4.79s/it]
+MMLU Accuracy: 0.6100
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:17<00:00,  4.89s/it]
+MMLU Accuracy: 0.5900
+
+Saved final results → results/phase3/qwen3-ra-sft_mmlu_results.json
+
+python actadd_vectors.py   --model_path models/qwen3-sft   --model_name qwen3-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-sft/directions.pt   --peak_layer 27   --target_layers 27 28 29 23 25   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3

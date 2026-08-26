@@ -1,0 +1,353 @@
+MAIN] Phase 1 — running: ['llama-sft', 'llama-ra-sft', 'llama-orpo', 'llama-base']
+
+[DATA] Loading Arditi dataset...
+[DATA] Train split sizes: 260 harmful, 18793 harmless
+[DATA] Using 256 pairs for direction extraction
+[DATA] Example harmful:  Suggest methods for hacking into a financial institution's website and stealing ...
+[DATA] Example harmless: Can you recommend a chocolate cake recipe for two?...
+
+============================================================
+[MAIN] Starting: llama-sft (llama)
+============================================================
+
+[llama-sft] arch=llama, is_base=False
+  [LOAD] models/llama-sft
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 106.31it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[llama-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-sft] VRAM after model free: 0.0GB
+[llama-sft] Computing magnitude profile...
+[llama-sft] Computing directions...
+[llama-sft] Computing stability...
+[llama-sft] Computing representation cosine similarity...
+[llama-sft] Peak layer: 31
+[llama-sft] Top 5 layers: [31, 30, 29, 28, 27]
+[HF] Pushing incremental results...
+Processing Files (1 / 1)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB,  158kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB,  158kB/s  
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: llama-ra-sft (llama)
+============================================================
+
+[llama-ra-sft] arch=llama, is_base=False
+  [LOAD] models/llama-rasft
+  [LOAD] Expected: 32 layers, d_model=4096
+[ERROR] llama-ra-sft failed: Model load failed for llama-ra-sft: models/llama-rasft is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+[MAIN] Continuing with remaining models...
+
+============================================================
+[MAIN] Starting: llama-orpo (llama)
+============================================================
+
+[llama-orpo] arch=llama, is_base=False
+  [LOAD] models/llama-orpo
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 82.35it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[llama-orpo] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-orpo] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-orpo] VRAM after model free: 0.0GB
+[llama-orpo] Computing magnitude profile...
+[llama-orpo] Computing directions...
+[llama-orpo] Computing stability...
+[llama-orpo] Computing representation cosine similarity...
+[llama-orpo] Peak layer: 31
+[llama-orpo] Top 5 layers: [31, 30, 29, 28, 27]
+[HF] Pushing incremental results...
+Processing Files (2 / 2)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.08MB / 1.08MB,  207kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB,  207kB/s  
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: llama-base (llama)
+============================================================
+
+[llama-base] arch=llama, is_base=True
+  [LOAD] models/llama-base
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.48it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[llama-base] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-base] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-base] VRAM after model free: 0.0GB
+[llama-base] Computing magnitude profile...
+[llama-base] Computing directions...
+[llama-base] Computing stability...
+[llama-base] Computing representation cosine similarity...
+[llama-base] Peak layer: 31
+[llama-base] Top 5 layers: [31, 30, 29, 28, 27]
+[HF] Pushing incremental results...
+Processing Files (3 / 3)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.61MB / 1.61MB,  207kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB,  207kB/s  
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+[HF] Done.
+
+[CROSS-VARIANT] LLAMA pairwise cosine similarities (3 variants)...
+
+Layer | Llama Safety SFT vs Llama Safety ORPO | Llama Safety SFT vs Llama base model | Llama Safety ORPO vs Llama base model
+----------------------------------------------------------------------------------------------------------------------------
+  00  |     0.9961 |    -0.0141 |    -0.0135
+  04  |     0.7961 |     0.0732 |     0.0189
+  08  |     0.7116 |     0.1438 |     0.1097
+  12  |     0.6365 |     0.1618 |     0.1727
+  16  |     0.5957 |     0.1216 |     0.1574
+  20  |     0.6001 |     0.1303 |     0.1310
+  24  |     0.5898 |     0.1575 |     0.1512
+  28  |     0.5309 |     0.1523 |     0.1570
+[PLOT] Saved → results/phase1/cosine_heatmap_llama.png
+[PLOT] Saved → results/phase1/stability_llama.png
+[PLOT] Saved → results/phase1/magnitude_profile_llama.png
+
+[SHUTDOWN] Reason: Phase 1 complete
+[HF] Pushing final results...
+Processing Files (6 / 6)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.88MB / 1.88MB,  103kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  268kB /  268kB,  103kB/s  
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 77.4kB / 77.4kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.1kB / 95.1kB            
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.4kB / 95.4kB            
+[HF] Done.
+[SHUTDOWN] Powering off in 60 seconds.
+[SHUTDOWN] Cancel with: sudo shutdown -c
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down
+(main) root@C.35676993:/workspace$ python refusal_direction.py
+[MAIN] Phase 1 — running: ['llama-sft', 'llama-ra-sft', 'llama-orpo', 'llama-base']
+
+[DATA] Loading Arditi dataset...
+[DATA] Train split sizes: 260 harmful, 18793 harmless
+[DATA] Using 256 pairs for direction extraction
+[DATA] Example harmful:  Suggest methods for hacking into a financial institution's website and stealing ...
+[DATA] Example harmless: Can you recommend a chocolate cake recipe for two?...
+
+============================================================
+[MAIN] Starting: llama-sft (llama)
+============================================================
+[llama-sft] Checkpoint found — loading.
+[HF] Pushing incremental results...
+Processing Files (6 / 6)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.88MB / 1.88MB,  0.00B/s  
+New Data Upload               : |                                                                                                                        |  0.00B /  0.00B,  0.00B/s  
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 77.4kB / 77.4kB            
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.4kB / 95.4kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.1kB / 95.1kB            
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+No files have been modified since last commit. Skipping to prevent empty commit.
+[HF] Done.
+
+============================================================
+[MAIN] Starting: llama-ra-sft (llama)
+============================================================
+
+[llama-ra-sft] arch=llama, is_base=False
+  [LOAD] models/llama-ra-sft
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 78.09it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[llama-ra-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-ra-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[llama-ra-sft] VRAM after model free: 0.0GB
+[llama-ra-sft] Computing magnitude profile...
+[llama-ra-sft] Computing directions...
+[llama-ra-sft] Computing stability...
+[llama-ra-sft] Computing representation cosine similarity...
+[llama-ra-sft] Peak layer: 31
+[llama-ra-sft] Top 5 layers: [31, 30, 29, 28, 27]
+[HF] Pushing incremental results...
+Processing Files (7 / 7)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.42MB / 2.42MB,  158kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB,  158kB/s  
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 77.4kB / 77.4kB            
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.4kB / 95.4kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.1kB / 95.1kB            
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  ...lama-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: llama-orpo (llama)
+============================================================
+[llama-orpo] Checkpoint found — loading.
+[HF] Pushing incremental results...
+Processing Files (7 / 7)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.42MB / 2.42MB,  0.00B/s  
+New Data Upload               : |                                                                                                                        |  0.00B /  0.00B,  0.00B/s  
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 77.4kB / 77.4kB            
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.4kB / 95.4kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.1kB / 95.1kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  ...lama-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+No files have been modified since last commit. Skipping to prevent empty commit.
+[HF] Done.
+
+============================================================
+[MAIN] Starting: llama-base (llama)
+============================================================
+[llama-base] Checkpoint found — loading.
+[HF] Pushing incremental results...
+Processing Files (7 / 7)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.42MB / 2.42MB,  0.00B/s  
+New Data Upload               : |                                                                                                                        |  0.00B /  0.00B,  0.00B/s  
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.4kB / 95.4kB            
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 77.4kB / 77.4kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 95.1kB / 95.1kB            
+  ...lama-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+No files have been modified since last commit. Skipping to prevent empty commit.
+[HF] Done.
+
+[CROSS-VARIANT] LLAMA pairwise cosine similarities (4 variants)...
+
+Layer | Llama Safety SFT vs Llama Safety Ra-SFT | Llama Safety SFT vs Llama Safety ORPO | Llama Safety SFT vs Llama base model | Llama Safety Ra-SFT vs Llama Safety ORPO | Llama Safety Ra-SFT vs Llama base model | Llama Safety ORPO vs Llama base model
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  00  |     0.9941 |     0.9961 |    -0.0141 |     0.9947 |    -0.0149 |    -0.0135
+  04  |     0.7832 |     0.7961 |     0.0732 |     0.7019 |     0.0703 |     0.0189
+  08  |     0.6363 |     0.7116 |     0.1438 |     0.5253 |     0.1202 |     0.1097
+  12  |     0.5234 |     0.6365 |     0.1618 |     0.5054 |     0.2107 |     0.1727
+  16  |     0.5032 |     0.5957 |     0.1216 |     0.5720 |     0.0869 |     0.1574
+  20  |     0.5029 |     0.6001 |     0.1303 |     0.5636 |     0.0514 |     0.1310
+  24  |     0.4148 |     0.5898 |     0.1575 |     0.4745 |     0.0355 |     0.1512
+  28  |     0.3303 |     0.5309 |     0.1523 |     0.4162 |     0.0567 |     0.1570
+[PLOT] Saved → results/phase1/cosine_heatmap_llama.png
+[PLOT] Saved → results/phase1/stability_llama.png
+[PLOT] Saved → results/phase1/magnitude_profile_llama.png
+
+[SHUTDOWN] Reason: Phase 1 complete
+[HF] Pushing final results...
+Processing Files (7 / 7)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.48MB / 2.48MB,  125kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  326kB /  326kB,  125kB/s  
+  ...lama-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../llama-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  ...1/llama-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  538kB /  538kB            
+  .../cosine_heatmap_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  115kB /  115kB            
+  ...gnitude_profile_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  106kB /  106kB            
+  ...hase1/stability_llama.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  105kB /  105kB            
+[HF] Done.
+[SHUTDOWN] Powering off in 60 seconds.
+[SHUTDOWN] Cancel with: sudo shutdown -c
+
+[EARLY DIAG] Running early layer divergence check...
+[EARLY DIAG] Loading llama-sft...
+  [LOAD] models/llama-sft
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 77.18it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[EARLY DIAG] llama-sft done, model freed.
+[EARLY DIAG] Loading llama-ra-sft...
+  [LOAD] models/llama-ra-sft
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:04<00:00, 72.27it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[EARLY DIAG] llama-ra-sft done, model freed.
+[EARLY DIAG] Loading llama-orpo...
+  [LOAD] models/llama-orpo
+  [LOAD] Expected: 32 layers, d_model=4096
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.52it/s]
+  [LOAD] Actual: 32 layers, d_model=4096
+  [LOAD] VRAM after load: 16.1GB
+[EARLY DIAG] llama-orpo done, model freed.
+
+[EARLY DIAG] Layer 3 cosine sim on harmless prompts:
+  llama-sft_vs_llama-ra-sft: 0.9213
+  llama-sft_vs_llama-orpo: 0.9300
+  llama-ra-sft_vs_llama-orpo: 0.8998
+
+[EARLY DIAG] Layer 4 cosine sim on harmless prompts:
+  llama-sft_vs_llama-ra-sft: 0.9000
+  llama-sft_vs_llama-orpo: 0.9108
+  llama-ra-sft_vs_llama-orpo: 0.8695
+
+[EARLY DIAG] Layer 5 cosine sim on harmless prompts:
+  llama-sft_vs_llama-ra-sft: 0.9017
+  llama-sft_vs_llama-orpo: 0.9031
+  llama-ra-sft_vs_llama-orpo: 0.8582
+[EARLY DIAG] Saved → results/phase1/early_layer_diagnostic.json
+[PLOT] Saved → results/phase1/magnitude_profile_llama.png
+
+
+[CROSS-VARIANT] LLAMA pairwise cosine similarities (4 variants)...
+
+Layer | Llama Safety SFT vs Llama Safety Ra-SFT | Llama Safety SFT vs Llama Safety ORPO | Llama Safety SFT vs Llama base model | Llama Safety Ra-SFT vs Llama Safety ORPO | Llama Safety Ra-SFT vs Llama base model | Llama Safety ORPO vs Llama base model
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  00  |     0.9941 |     0.9961 |    -0.0141 |     0.9947 |    -0.0149 |    -0.0135
+  04  |     0.7832 |     0.7961 |     0.0732 |     0.7019 |     0.0703 |     0.0189
+  08  |     0.6363 |     0.7116 |     0.1438 |     0.5253 |     0.1202 |     0.1097
+  12  |     0.5234 |     0.6365 |     0.1618 |     0.5054 |     0.2107 |     0.1727
+  16  |     0.5032 |     0.5957 |     0.1216 |     0.5720 |     0.0869 |     0.1574
+  20  |     0.5029 |     0.6001 |     0.1303 |     0.5636 |     0.0514 |     0.1310
+  24  |     0.4148 |     0.5898 |     0.1575 |     0.4745 |     0.0355 |     0.1512
+  28  |     0.3303 |     0.5309 |     0.1523 |     0.4162 |     0.0567 |     0.1570
+[PLOT] Saved → results/phase1/cosine_heatmap_llama.png
+[PLOT] Saved → results/phase1/cosine_similarity_profiles_llama.png
+[PLOT] Saved → results/phase1/stability_llama.png

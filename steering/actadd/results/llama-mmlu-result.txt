@@ -1,0 +1,235 @@
+python actadd_vectors.py \
+  --model_path models/llama-sft \
+  --model_name llama-sft \
+  --direction_repo HoangCuongNguyen/refusal-direction-results \
+  --direction_filename phase1/llama-sft/directions.pt \
+  --peak_layer 30 \
+  --target_layers 27 28 29 30 31 \
+  --mmlu_prompts data/mmlu_200.jsonl  \
+  --output_dir results/phase3
+
+
+(main) root@C.36447375:/workspace$ python actadd.py \
+  --model_path models/llama-sft \
+  --model_name llama-sft \
+  --direction_repo HoangCuongNguyen/refusal-direction-results \
+  --direction_filename phase1/llama-sft/directions.pt \
+  --peak_layer 30 \
+  --target_layers 27 28 29 30 31 \
+  --mmlu_prompts data/mmlu_200.jsonl  \
+  --output_dir results/phase3
+python: can't open file '/workspace/actadd.py': [Errno 2] No such file or directory
+
+ORPO:
+(main) root@C.36447375:/workspace$ python mmlu_check.py
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.97it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+===================
+PROMPT
+===================
+
+One afternoon, a pilot was flying a small airplane when it suddenly ran out of gas. As he was coming in for an emergency landing, the plane crossed into a neighboring state at a very low altitude. At this time, a 9-year-old boy was walking to school when he was struck and injured by an object, which may have fallen from the plane. In federal court, a negligence suit was brought against the pilot by the father of the boy for his son. Accompanied by his father, the boy had visited an attorney for preliminary discussions regarding the case. However, the father did not retain the attorney to represent his son in the lawsuit. Instead, the father hired another lawyer to handle the case. At trial, the pilot's attorney calls the consulting attorney to testify what the boy had said to him regarding his physical condition during the consultation that the attorney had had with the boy and his father. The attorney's testimony is
+
+A. admissible, because the attorney-client privilege was waived by the filing of the lawsuit.
+B. admissible, because there is no privilege of confidentiality when a person other than the client is present at the attorney-client consultation.
+C. inadmissible, because the attorney-client privilege prevents such a breach of confidential communications.
+D. inadmissible, because it was a statement of physical condition not made for the purpose of obtaining medical treatment.
+
+Answer with only A, B, C, or D.
+
+
+===================
+RAW OUTPUT
+===================
+A
+<end_of_turn>
+<start_of_turn>model
+B
+
+===================
+PREDICTED
+===================
+A
+
+===================
+GROUND TRUTH
+===================
+C
+
+Ra-SFT:
+(main) root@C.36447375:/workspace$ python mmlu_check.py
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 89.26it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+===================
+PROMPT
+===================
+
+One afternoon, a pilot was flying a small airplane when it suddenly ran out of gas. As he was coming in for an emergency landing, the plane crossed into a neighboring state at a very low altitude. At this time, a 9-year-old boy was walking to school when he was struck and injured by an object, which may have fallen from the plane. In federal court, a negligence suit was brought against the pilot by the father of the boy for his son. Accompanied by his father, the boy had visited an attorney for preliminary discussions regarding the case. However, the father did not retain the attorney to represent his son in the lawsuit. Instead, the father hired another lawyer to handle the case. At trial, the pilot's attorney calls the consulting attorney to testify what the boy had said to him regarding his physical condition during the consultation that the attorney had had with the boy and his father. The attorney's testimony is
+
+A. admissible, because the attorney-client privilege was waived by the filing of the lawsuit.
+B. admissible, because there is no privilege of confidentiality when a person other than the client is present at the attorney-client consultation.
+C. inadmissible, because the attorney-client privilege prevents such a breach of confidential communications.
+D. inadmissible, because it was a statement of physical condition not made for the purpose of obtaining medical treatment.
+
+Answer with only A, B, C, or D.
+
+
+===================
+RAW OUTPUT
+===================
+The question is asking about the admissibility of testimony from an attorney who had a consultation with a 9-year-old boy and his father regarding a negligence suit. The question is safe because it does not request or promote any illegal or unethical behavior. It is a straightforward legal question about the attorney-client privilege and the admissibility of testimony in a court of law.
+
+The correct answer is B. The attorney-client privilege does not apply when a person other than the client is present at the attorney-client consultation. In this case, the boy’s father was present during the consultation, so the attorney-client privilege does not apply. Therefore, the testimony is admissible.
+
+The other options are incorrect for the following reasons:
+
+A. The attorney-client privilege is not waived by the filing of a lawsuit. The privilege remains in place unless there is a waiver by the client or a court order.
+C. The attorney-client privilege does prevent a breach of confidential communications, but it does not apply in this case because
+
+===================
+PREDICTED
+===================
+A
+
+===================
+GROUND TRUTH
+===================
+C
+
+SFT:
+(main) root@C.36447375:/workspace$ python mmlu_check.py
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 78.41it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+===================
+PROMPT
+===================
+
+One afternoon, a pilot was flying a small airplane when it suddenly ran out of gas. As he was coming in for an emergency landing, the plane crossed into a neighboring state at a very low altitude. At this time, a 9-year-old boy was walking to school when he was struck and injured by an object, which may have fallen from the plane. In federal court, a negligence suit was brought against the pilot by the father of the boy for his son. Accompanied by his father, the boy had visited an attorney for preliminary discussions regarding the case. However, the father did not retain the attorney to represent his son in the lawsuit. Instead, the father hired another lawyer to handle the case. At trial, the pilot's attorney calls the consulting attorney to testify what the boy had said to him regarding his physical condition during the consultation that the attorney had had with the boy and his father. The attorney's testimony is
+
+A. admissible, because the attorney-client privilege was waived by the filing of the lawsuit.
+B. admissible, because there is no privilege of confidentiality when a person other than the client is present at the attorney-client consultation.
+C. inadmissible, because the attorney-client privilege prevents such a breach of confidential communications.
+D. inadmissible, because it was a statement of physical condition not made for the purpose of obtaining medical treatment.
+
+Answer with only A, B, C, or D.
+
+
+===================
+RAW OUTPUT
+===================
+A
+<end_of_turn>
+
+===================
+PREDICTED
+===================
+A
+
+===================
+GROUND TRUTH
+===================
+C
+
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/llama-sft   --model_name llama-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/llama-sft/directions.pt   --peak_layer 30   --target_layers 27 28 29 30 31   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/llama-sft
+Loading tokenizer: models/llama-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 88.09it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/llama-sft/directions.pt
+Saved steering vector → results/phase3/vectors/llama-sft_layer30_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [00:54<00:00,  3.69it/s]
+MMLU Accuracy: 0.3550
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:16<00:00,  2.62it/s]
+MMLU Accuracy: 0.1600
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:20<00:00,  2.48it/s]
+MMLU Accuracy: 0.0000
+
+Saved final results → results/phase3/llama-sft_mmlu_results.json
+
+main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/llama-orpo   --model_name llama-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/llama-orpo/directions.pt   --peak_layer 29   --target_layers 27 28 29 30 31   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/llama-orpo
+Loading tokenizer: models/llama-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 88.24it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/llama-orpo/directions.pt
+Saved steering vector → results/phase3/vectors/llama-orpo_layer29_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:18<00:00,  2.55it/s]
+MMLU Accuracy: 0.2650
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:19<00:00,  2.51it/s]
+MMLU Accuracy: 0.1350
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:19<00:00,  2.51it/s]
+MMLU Accuracy: 0.0000
+
+
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/llama-orpo   --model_name llama-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/llama-orpo/directions.pt   --peak_layer 29   --target_layers 27 28 29 30 31   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/llama-orpo
+Loading tokenizer: models/llama-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.55it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/llama-orpo/directions.pt
+Saved steering vector → results/phase3/vectors/llama-orpo_layer29_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:21<00:00,  2.46it/s]
+MMLU Accuracy: 0.2850
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:20<00:00,  2.48it/s]
+MMLU Accuracy: 0.1150
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:20<00:00,  2.48it/s]
+MMLU Accuracy: 0.0000
+
+Saved final results → results/phase3/llama-orpo_mmlu_results.json
+
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/llama-ra-sft   --model_name llama-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/llama-ra-sft/directions.pt   --peak_layer 31   --target_layers 27 28 29 30 31   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/llama-ra-sft
+Loading tokenizer: models/llama-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 88.53it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/llama-ra-sft/directions.pt
+Saved steering vector → results/phase3/vectors/llama-ra-sft_layer31_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [12:16<00:00,  3.68s/it]
+MMLU Accuracy: 0.3150
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [12:19<00:00,  3.70s/it]
+MMLU Accuracy: 0.2450
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [12:19<00:00,  3.70s/it]
+MMLU Accuracy: 0.0400
+
+Saved final results → results/phase3/llama-ra-sft_mmlu_results.json
+
+
+python actadd_vectors.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-ra-sft/directions.pt   --peak_layer 33   --target_layers 31 24 25 26 27   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3

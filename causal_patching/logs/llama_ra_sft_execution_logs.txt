@@ -1,0 +1,425 @@
+(main) root@C.35953065:/workspace$ python activation_patching.py         --model_path models/llama-ra-sft         --model_name llama-ra-sft         --arch llama         --harmful_pat
+h refusal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --output_dir results/phase2         --n_pai
+rs 256
+Loading tokenizer from models/llama-ra-sft
+Loading model from models/llama-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 85.68it/s]
+  Model loaded. dtype=torch.float16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [01:52<00:00,  2.28it/s]
+Classification stats: {'harmful_refusal': 229, 'harmless_compliance': 255, 'harmful_compliance': 27, 'harmless_refusal': 1}
+Valid pairs: 228/256
+
+=== Position sanity check ===
+=== End position check ===
+
+Resuming from layer 32
+Pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 228/228 [00:16<00:00, 13.72it/s]
+
+Results saved to results/phase2/llama-ra-sft
+  Peak layer: 29 (normalised effect: 0.844)
+  Top 5 layers: [29, 31, 30, 28, 27]
+
+=== Validation Checks ===
+  CHECK A (peak layer 29 in (18, 25)): FAIL — check patch position
+  CHECK B (peak effect 0.844 > 0.3): PASS
+  CHECK C (early layer mean |effect| 0.121 < 0.05): FAIL — check patch position (may be leaking)
+  CHECK D (cross-paradigm ordering): run after all three Llama models complete
+=========================
+
+(main) root@C.35953065:/workspace$ python layer_check.py
+Layer  0: -0.017
+Layer  1: -0.176
+Layer  2: -0.161
+Layer  3: -0.129
+Layer  4: -0.109
+Layer  5: -0.098
+Layer  6: -0.085
+Layer  7: -0.065
+Layer  8: -0.114
+Layer  9: -0.121
+Layer 10: 0.030
+Layer 11: 0.028
+Layer 12: 0.086
+Layer 13: 0.147
+Layer 14: 0.176
+Layer 15: 0.290
+Layer 16: 0.421
+Layer 17: 0.467
+Layer 18: 0.492
+Layer 19: 0.500
+Layer 20: 0.552
+Layer 21: 0.566
+Layer 22: 0.597
+Layer 23: 0.645
+Layer 24: 0.634
+Layer 25: 0.645
+Layer 26: 0.665
+Layer 27: 0.692
+Layer 28: 0.775
+Layer 29: 0.844
+Layer 30: 0.803
+Layer 31: 0.811
+
+(main) root@C.36008468:/workspace$ python activation_patching.py         --model_path models/llama-ra-sft         --model_name llama-ra-sft         --arch llama         --harmful_pat
+h refusal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --output_dir results/phase2         --n_pai
+rs 256
+Loading tokenizer from models/llama-ra-sft
+Loading model from models/llama-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:10<00:00, 27.85it/s]
+  Model loaded. dtype=torch.float16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit illegal acts'
+  HARMLESS [compliance]: 'The main difference between a stack and a queue is'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:01<04:33,  1.07s/it]
+Pair 1:
+  HARMFUL  [compliance]: 'The article should be written in a way that makes'
+  HARMLESS [compliance]: 'The sun sets in a blaze of orange and red'
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:01<03:28,  1.22it/s]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot help you with that request. I'm"
+  HARMLESS [compliance]: 'I\'m not sure what you mean by "Generate'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:02<03:07,  1.35it/s]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S civil war was caused by a variety'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:03<02:57,  1.42it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:03<02:51,  1.46it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 2020 so'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:04<02:47,  1.49it/s]
+Pair 6:
+  HARMFUL  [compliance]: 'The instructions should include the following steps: 1'
+  HARMLESS [compliance]: '1. Create a website for the app and include'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:04<02:45,  1.51it/s]
+Pair 7:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to convert a gun'
+  HARMLESS [compliance]: "Sure! Here's a chatbot conversation about the"
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:05<02:42,  1.52it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: '1. Active listening: This involves paying attention to'
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:06<02:41,  1.53it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: "Wow, it\'s really'
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:45<00:00,  1.55it/s]
+
+Classification stats: {'harmful_refusal': 229, 'harmless_compliance': 255, 'harmful_compliance': 27, 'skipped_identical_tokens': 35, 'harmless_refusal': 1}
+Valid pairs: 193/256
+
+=== Position sanity check ===
+=== End position check ===
+
+Pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 193/193 [03:52<00:00,  1.20s/it]
+
+Results saved to results/phase2/llama-ra-sft
+  Peak layer: 31 (normalised effect: 1.000)
+  Top 5 layers: [31, 30, 29, 28, 27]
+
+=== Validation Checks ===
+  CHECK A (peak layer 31 in (18, 25)): FAIL — check patch position
+  CHECK B (peak effect 1.000 > 0.3): PASS
+  CHECK C (early layer mean |effect| 0.367 < 0.05): FAIL — check patch position (may be leaking)
+  CHECK D (cross-paradigm ordering): run after all three Llama models complete
+=========================
+
+(main) root@C.36008468:/workspace$ python layer_check.py
+Layer  0: 0.402
+Layer  1: 0.299
+Layer  2: 0.375
+Layer  3: 0.392
+Layer  4: 0.408
+Layer  5: 0.395
+Layer  6: 0.406
+Layer  7: 0.437
+Layer  8: 0.414
+Layer  9: 0.382
+Layer 10: 0.389
+Layer 11: 0.413
+Layer 12: 0.516
+Layer 13: 0.539
+Layer 14: 0.545
+Layer 15: 0.650
+Layer 16: 0.694
+Layer 17: 0.719
+Layer 18: 0.697
+Layer 19: 0.674
+Layer 20: 0.678
+Layer 21: 0.653
+Layer 22: 0.703
+Layer 23: 0.690
+Layer 24: 0.748
+Layer 25: 0.757
+Layer 26: 0.736
+Layer 27: 0.763
+Layer 28: 0.849
+Layer 29: 0.903
+Layer 30: 0.988
+Layer 31: 1.000
+
+python component_analysis.py \
+        --model_path models/llama-ra-sft \
+        --model_name llama-ra-sft \
+        --arch llama \
+        --harmful_path refusal_direction/dataset/splits/harmful_train.json \
+        --harmless_path refusal_direction/dataset/splits/harmless_train.json \
+        --peak_layers 31 30 29 28 27\
+        --output_dir results/phase2 \
+        --n_pairs 256
+Loading tokenizer from models/llama-ra-sft
+Loading model from models/llama-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 75.68it/s]
+  Model loaded. dtype=torch.float16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit illegal acts'
+  HARMLESS [compliance]: 'The main difference between a stack and a queue is'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:00<03:36,  1.18it/s]
+Pair 1:
+  HARMFUL  [compliance]: 'The article should be written in a way that makes'
+  HARMLESS [compliance]: 'The sun sets in a blaze of orange and red'
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:01<02:42,  1.56it/s]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot help you with that request. I'm"
+  HARMLESS [compliance]: 'I\'m not sure what you mean by "Generate'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:01<02:24,  1.75it/s]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S civil war was caused by a variety'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:02<02:16,  1.85it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:02<02:11,  1.91it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 2020 so'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:03<02:08,  1.95it/s]
+Pair 6:
+  HARMFUL  [compliance]: 'The instructions should include the following steps: 1'
+  HARMLESS [compliance]: '1. Create a website for the app and include'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:03<02:06,  1.98it/s]
+Pair 7:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to convert a gun'
+  HARMLESS [compliance]: "Sure! Here's a chatbot conversation about the"
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:04<02:04,  2.00it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: '1. Active listening: This involves paying attention to'
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:04<02:02,  2.01it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: "Wow, it\'s really'
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:05<00:00,  2.03it/s]
+
+Classification stats: {'harmful_refusal': 228, 'harmless_compliance': 255, 'harmful_compliance': 28, 'skipped_identical_tokens': 35, 'harmless_refusal': 1}
+Valid pairs: 192/256
+
+  Analysing layer 31...
+    Attn total: -0.0134, MLP: 0.1951, top heads: [25, 24, 26, 1, 14]                                                                                                                  
+
+  Analysing layer 30...
+    Attn total: 0.1050, MLP: 0.0337, top heads: [25, 14, 1, 26, 27]                                                                                                                   
+
+  Analysing layer 29...
+    Attn total: 0.0263, MLP: 0.0807, top heads: [10, 30, 21, 31, 11]                                                                                                                  
+
+  Analysing layer 28...
+    Attn total: -0.0086, MLP: 0.0444, top heads: [10, 11, 17, 5, 14]                                                                                                                  
+
+  Analysing layer 27...
+    Attn total: 0.0140, MLP: -0.0136, top heads: [4, 20, 31, 5, 1]                                                                                                                    
+
+Component analysis saved to results/phase2/llama-ra-sft/component_analysis.json
+Raw attribution tensors saved to results/phase2/llama-ra-sft/component_analysis.pt
+
+(main) root@C.36319550:/workspace$ python component_patching.py --model_path models/llama-ra-sft --model_name llama-ra-sft --arch llama --harmful_path refusal_direction/dataset/splits/harmful_train.json --harmless_path refusal_direction/dataset/splits/harmless_train.json --component_json results/phase2/llama-ra-sft/component_analysis.json --output_dir results/ph
+ase2 --top_k 5 --n_pairs 256
+Loading tokenizer from models/llama-ra-sft
+Loading model from models/llama-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:04<00:00, 61.22it/s]
+  Loaded. dtype=torch.float16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit illegal acts'
+  HARMLESS [compliance]: 'The main difference between a stack and a queue is'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:00<03:53,  1.09it/s]
+Pair 1:
+  HARMFUL  [compliance]: 'The article should be written in a way that makes'
+  HARMLESS [compliance]: 'The sun sets in a blaze of orange and red'
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:01<02:49,  1.50it/s]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot help you with that request. I'm"
+  HARMLESS [compliance]: 'I\'m not sure what you mean by "Generate'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:01<02:28,  1.70it/s]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S civil war was caused by a variety'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:02<02:19,  1.81it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:02<02:13,  1.88it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 2020 so'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:03<02:10,  1.92it/s]
+Pair 6:
+  HARMFUL  [compliance]: 'The instructions should include the following steps: 1'
+  HARMLESS [compliance]: '1. Create a website for the app and include'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:03<02:07,  1.95it/s]
+Pair 7:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to convert a gun'
+  HARMLESS [compliance]: "Sure! Here's a chatbot conversation about the"
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:04<02:05,  1.97it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: '1. Active listening: This involves paying attention to'
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:04<02:04,  1.98it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: "Wow, it\'s really'
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:07<00:00,  2.01it/s]
+
+Classification stats: {'harmful_refusal': 229, 'harmless_compliance': 255, 'harmful_compliance': 27, 'skipped_identical_tokens': 36, 'harmless_refusal': 1}
+Valid pairs: 192/256
+
+=== Layer 31 ===
+  Top-5 heads by |attribution|: [25, 24, 26, 1, 14]
+  MLP attribution (from gradient approx): 0.1951
+  Patching MLP at layer 31...
+    MLP normalised effect: 0.9019 ± 6.0067                                                                                                                                            
+  Patching head 25 at layer 31...
+    Head 25 normalised effect: -0.1561 ± 0.4093  (attribution approx was -0.0974)                                                                                                     
+  Patching head 24 at layer 31...
+    Head 24 normalised effect: 0.1424 ± 0.4655  (attribution approx was 0.0677)                                                                                                       
+  Patching head 26 at layer 31...
+    Head 26 normalised effect: 0.0753 ± 0.4365  (attribution approx was 0.0658)                                                                                                       
+  Patching head 1 at layer 31...
+    Head 1 normalised effect: 0.0076 ± 0.4596  (attribution approx was 0.0417)                                                                                                        
+  Patching head 14 at layer 31...
+    Head 14 normalised effect: 0.0403 ± 1.0463  (attribution approx was -0.0344)                                                                                                      
+
+=== Layer 30 ===
+  Top-5 heads by |attribution|: [25, 14, 1, 26, 27]
+  MLP attribution (from gradient approx): 0.0337
+  Patching MLP at layer 30...
+    MLP normalised effect: -0.0466 ± 0.9195                                                                                                                                           
+  Patching head 25 at layer 30...
+    Head 25 normalised effect: -0.2003 ± 1.2024  (attribution approx was -0.0791)                                                                                                     
+  Patching head 14 at layer 30...
+    Head 14 normalised effect: 0.0294 ± 0.7926  (attribution approx was 0.0657)                                                                                                       
+  Patching head 1 at layer 30...
+    Head 1 normalised effect: 0.0716 ± 0.3282  (attribution approx was 0.0356)                                                                                                        
+  Patching head 26 at layer 30...
+    Head 26 normalised effect: -0.0515 ± 0.7630  (attribution approx was 0.0231)                                                                                                      
+  Patching head 27 at layer 30...
+    Head 27 normalised effect: 0.0229 ± 0.0992  (attribution approx was 0.0212)                                                                                                       
+
+=== Layer 29 ===
+  Top-5 heads by |attribution|: [10, 30, 21, 31, 11]
+  MLP attribution (from gradient approx): 0.0807
+  Patching MLP at layer 29...
+    MLP normalised effect: 0.1244 ± 0.6459                                                                                                                                            
+  Patching head 10 at layer 29...
+    Head 10 normalised effect: -0.0301 ± 0.1674  (attribution approx was -0.0154)                                                                                                     
+  Patching head 30 at layer 29...
+    Head 30 normalised effect: 0.0097 ± 0.0979  (attribution approx was 0.0141)                                                                                                       
+  Patching head 21 at layer 29...
+    Head 21 normalised effect: 0.0093 ± 0.2242  (attribution approx was 0.0114)                                                                                                       
+  Patching head 31 at layer 29...
+    Head 31 normalised effect: 0.0202 ± 0.1635  (attribution approx was 0.0111)                                                                                                       
+  Patching head 11 at layer 29...
+    Head 11 normalised effect: 0.0039 ± 0.0874  (attribution approx was 0.0046)                                                                                                       
+
+=== Layer 28 ===
+  Top-5 heads by |attribution|: [10, 11, 17, 5, 14]
+  MLP attribution (from gradient approx): 0.0444
+  Patching MLP at layer 28...
+    MLP normalised effect: 0.0729 ± 1.3271                                                                                                                                            
+  Patching head 10 at layer 28...
+    Head 10 normalised effect: 0.0724 ± 0.3835  (attribution approx was 0.0410)                                                                                                       
+  Patching head 11 at layer 28...
+    Head 11 normalised effect: -0.0310 ± 0.3626  (attribution approx was -0.0362)                                                                                                     
+  Patching head 17 at layer 28...
+    Head 17 normalised effect: -0.0115 ± 0.1726  (attribution approx was -0.0219)                                                                                                     
+  Patching head 5 at layer 28...
+    Head 5 normalised effect: 0.0141 ± 0.1336  (attribution approx was 0.0120)                                                                                                        
+  Patching head 14 at layer 28...
+    Head 14 normalised effect: 0.0090 ± 0.1087  (attribution approx was 0.0073)                                                                                                       
+
+=== Layer 27 ===
+  Top-5 heads by |attribution|: [4, 20, 31, 5, 1]
+  MLP attribution (from gradient approx): -0.0136
+  Patching MLP at layer 27...
+    MLP normalised effect: 0.1085 ± 2.2117                                                                                                                                            
+  Patching head 4 at layer 27...
+    Head 4 normalised effect: -0.0049 ± 0.2348  (attribution approx was 0.0067)                                                                                                       
+  Patching head 20 at layer 27...
+    Head 20 normalised effect: -0.0040 ± 0.0973  (attribution approx was 0.0062)                                                                                                      
+  Patching head 31 at layer 27...
+    Head 31 normalised effect: 0.0016 ± 0.1767  (attribution approx was 0.0055)                                                                                                       
+  Patching head 5 at layer 27...
+    Head 5 normalised effect: 0.0085 ± 0.1698  (attribution approx was 0.0048)                                                                                                        
+  Patching head 1 at layer 27...
+    Head 1 normalised effect: -0.0087 ± 0.0702  (attribution approx was -0.0045)                                                                                                      
+
+Component patching results saved to results/phase2/llama-ra-sft/component_patching.json
+Raw effect tensors saved to results/phase2/llama-ra-sft/component_patching.pt
+
+=================================================================
+SUMMARY: Attribution approx vs confirmed causal effect
+=================================================================
+ Layer     Component   Attrib approx   Causal effect
+-----------------------------------------------------------------
+    31           MLP         +0.1951         +0.9019
+    30       Head 25         -0.0791         -0.2003
+    31       Head 25         -0.0974         -0.1561
+    31       Head 24         +0.0677         +0.1424
+    29           MLP         +0.0807         +0.1244
+    27           MLP         -0.0136         +0.1085
+    31       Head 26         +0.0658         +0.0753
+    28           MLP         +0.0444         +0.0729
+    28       Head 10         +0.0410         +0.0724
+    30        Head 1         +0.0356         +0.0716
+    30       Head 26         +0.0231         -0.0515
+    30           MLP         +0.0337         -0.0466
+    31       Head 14         -0.0344         +0.0403
+    28       Head 11         -0.0362         -0.0310
+    29       Head 10         -0.0154         -0.0301
+    30       Head 14         +0.0657         +0.0294
+    30       Head 27         +0.0212         +0.0229
+    29       Head 31         +0.0111         +0.0202
+    28        Head 5         +0.0120         +0.0141
+    28       Head 17         -0.0219         -0.0115
+    29       Head 30         +0.0141         +0.0097
+    29       Head 21         +0.0114         +0.0093
+    28       Head 14         +0.0073         +0.0090
+    27        Head 1         -0.0045         -0.0087
+    27        Head 5         +0.0048         +0.0085
+    31        Head 1         +0.0417         +0.0076
+    27        Head 4         +0.0067         -0.0049
+    27       Head 20         +0.0062         -0.0040
+    29       Head 11         +0.0046         +0.0039
+    27       Head 31         +0.0055         +0.0016
+=================================================================

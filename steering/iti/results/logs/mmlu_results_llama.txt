@@ -1,0 +1,20 @@
+(main) root@C.37201834:/workspace$ python mmlu_iti.py   --model_path models/llama-sft   --tokenizer_path workspace/tokenizer/llama-3.1-8b-tokenizer   --model_name llama-sft   --model_family llama   --probe_path iti_probes.pt   --target_heads 30:25   --mmlu_path datasets/mmlu_200.jsonl   --alphas 0 5 10 15 20   --batch_size 1   --max_length 1024   --max_new_tokens 8 --output_dir results/mmlu_iti/llama-sft_1
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Model family: llama
+Loading tokenizer: workspace/tokenizer/llama-3.1-8b-tokenizer
+Loading model: models/llama-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 88.19it/s]
+Loading ITI probes: iti_probes.pt
+MMLU alpha=0.0:   0%|                                                                                                                                         | 0/200 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+MMLU alpha=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:23<00:00,  2.38it/s]
+alpha=0.0: accuracy=0.4050 (81/200)
+MMLU alpha=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:25<00:00,  2.34it/s]
+alpha=5.0: accuracy=0.3900 (78/200)
+MMLU alpha=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:22<00:00,  2.42it/s]
+alpha=10.0: accuracy=0.3800 (76/200)
+MMLU alpha=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:25<00:00,  2.34it/s]
+alpha=15.0: accuracy=0.3950 (79/200)
+MMLU alpha=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:23<00:00,  2.41it/s]
+alpha=20.0: accuracy=0.3950 (79/200)
+Saved -> results/mmlu_iti/llama-sft_1/llama-sft_mmlu_iti_generate_alphas_0p0_5p0_10p0_15p0_20p0.json

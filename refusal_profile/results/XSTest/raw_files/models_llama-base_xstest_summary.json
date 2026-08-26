@@ -1,0 +1,8 @@
+{
+  "model": "models/llama-base",
+  "n_safe_prompts": 250,
+  "over_refusal_count": 15,
+  "over_refusal_rate": 0.06,
+  "refusal_count": 10,
+  "uncertain_count": 5
+}

@@ -1,0 +1,22 @@
+{
+  "model_name": "gemma-orpo",
+  "target_layers": [
+    41,
+    40,
+    39,
+    38,
+    37
+  ],
+  "alphas": [
+    -15.0,
+    -20.0
+  ],
+  "results": {
+    "-15.0": {
+      "mmlu_accuracy": 0.455
+    },
+    "-20.0": {
+      "mmlu_accuracy": 0.45
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# ── PyTorch (CUDA 12.1) ────────────────────────────────────────────────────────
+# Install separately using the PyTorch index (not on PyPI):
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# Or uncomment the lines below — pip will pull from the extra index automatically:
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+torchaudio
+
+# ── Core fine-tuning libraries ─────────────────────────────────────────────────
+transformers==5.7.0
+accelerate>=0.33.0
+datasets>=2.20.0
+trl==1.0.0
+
+huggingface-hub
+transformer_lens
+matplotlib
+sae-lens
+scikit-learn
+peft
+bitsandbytes>=0.46.1

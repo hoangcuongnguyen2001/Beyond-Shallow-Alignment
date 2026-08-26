@@ -1,0 +1,246 @@
+{
+  "method": "iti",
+  "metric": "mmlu_accuracy",
+  "model_name": "gemma-orpo",
+  "model_path": "models/gemma-orpo",
+  "probe_path": "iti_probes_head12.pt",
+  "target_heads": [
+    "40:12"
+  ],
+  "mmlu_path": "datasets/mmlu_200.jsonl",
+  "pos": -1,
+  "alphas": [
+    -5.0,
+    -10.0
+  ],
+  "results": {
+    "-5.0": {
+      "accuracy": 0.375,
+      "correct": 75,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.275,
+          "correct": 11,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.7,
+          "correct": 28,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.5,
+          "correct": 20,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.4,
+          "correct": 16,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "D",
+          "response": "The answer is D.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The product of (2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The factorization of the polynomial",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C.",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    },
+    "-10.0": {
+      "accuracy": 0.37,
+      "correct": 74,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.275,
+          "correct": 11,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.675,
+          "correct": 27,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.0,
+          "correct": 0,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.5,
+          "correct": 20,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.4,
+          "correct": 16,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "D",
+          "response": "The answer is D.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The product of (2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The factorization of the polynomial",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C.",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    }
+  }
+}

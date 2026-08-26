@@ -1,0 +1,26 @@
+{
+  "model_name": "llama-sft",
+  "target_layers": [
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "alphas": [
+    0.0,
+    5.0,
+    10.0
+  ],
+  "results": {
+    "0.0": {
+      "mmlu_accuracy": 0.355
+    },
+    "5.0": {
+      "mmlu_accuracy": 0.16
+    },
+    "10.0": {
+      "mmlu_accuracy": 0.0
+    }
+  }
+}

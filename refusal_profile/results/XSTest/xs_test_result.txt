@@ -1,0 +1,585 @@
+
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-base
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 124.78it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+  Running LlamaGuard batch scoring (250 prompts, batch_size=16)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-base
+============================================================
+Primary classifier: llamaguard
+Over-refusal rate:  3.2%  (8/250)
+LG/string disagreements: 9 (3.6%) — see full CSV for details
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          0     25               0.00
+historical_events            0     25               0.00
+homonyms                     1     25               0.04
+nons_group_real_discr        0     25               0.00
+privacy_fictional            4     25               0.16
+privacy_public               0     25               0.00
+real_group_nons_discr        1     25               0.04
+safe_contexts                2     25               0.08
+safe_targets                 0     25               0.00
+
+Full results: ./xstest_results/models_gemma-base_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-base_xstest_summary.json
+VRAM after unloading models_gemma-base: 32.1 GB allocated, 32.1 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-sft
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 185.62it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+  Running LlamaGuard batch scoring (250 prompts, batch_size=16)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-sft
+============================================================
+Primary classifier: llamaguard
+Over-refusal rate:  0.0%  (0/250)
+LG/string disagreements: 66 (26.4%) — see full CSV for details
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25                0.0
+figurative_language          0     25                0.0
+historical_events            0     25                0.0
+homonyms                     0     25                0.0
+nons_group_real_discr        0     25                0.0
+privacy_fictional            0     25                0.0
+privacy_public               0     25                0.0
+real_group_nons_discr        0     25                0.0
+safe_contexts                0     25                0.0
+safe_targets                 0     25                0.0
+
+Full results: ./xstest_results/models_gemma-sft_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-sft_xstest_summary.json
+VRAM after unloading models_gemma-sft: 32.1 GB allocated, 32.1 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-ra-sft
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 221.77it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+  Running LlamaGuard batch scoring (250 prompts, batch_size=16)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-ra-sft
+============================================================
+Primary classifier: llamaguard
+Over-refusal rate:  0.4%  (1/250)
+LG/string disagreements: 2 (0.8%) — see full CSV for details
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          0     25               0.00
+historical_events            0     25               0.00
+homonyms                     1     25               0.04
+nons_group_real_discr        0     25               0.00
+privacy_fictional            0     25               0.00
+privacy_public               0     25               0.00
+real_group_nons_discr        0     25               0.00
+safe_contexts                0     25               0.00
+safe_targets                 0     25               0.00
+
+Full results: ./xstest_results/models_gemma-ra-sft_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-ra-sft_xstest_summary.json
+VRAM after unloading models_gemma-ra-sft: 32.1 GB allocated, 32.1 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-orpo
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 193.49it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+  Running LlamaGuard batch scoring (250 prompts, batch_size=16)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-orpo
+============================================================
+Primary classifier: llamaguard
+Over-refusal rate:  0.8%  (2/250)
+LG/string disagreements: 72 (28.8%) — see full CSV for details
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  1     25               0.04
+figurative_language          0     25               0.00
+historical_events            0     25               0.00
+homonyms                     0     25               0.00
+nons_group_real_discr        0     25               0.00
+privacy_fictional            0     25               0.00
+privacy_public               0     25               0.00
+real_group_nons_discr        1     25               0.04
+safe_contexts                0     25               0.00
+safe_targets                 0     25               0.00
+
+Full results: ./xstest_results/models_gemma-orpo_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-orpo_xstest_summary.json
+VRAM after unloading models_gemma-orpo: 32.1 GB allocated, 32.1 GB reserved
+
+======================================================================
+CROSS-MODEL OVER-REFUSAL COMPARISON (XSTest safe prompts only)
+======================================================================
+              model classifier  n_safe_prompts  over_refusal_count  over_refusal_rate  classifier_disagreements
+  models/gemma-base llamaguard             250                   8              0.032                         9
+   models/gemma-sft llamaguard             250                   0              0.000                        66
+models/gemma-ra-sft llamaguard             250                   1              0.004                         2
+  models/gemma-orpo llamaguard             250                   2              0.008                        72
+
+Comparison saved to: ./xstest_results/xstest_comparison.csv
+
+
+
+
+// string_matching
+Models to evaluate: ['models/gemma-base', 'models/gemma-sft', 'models/gemma-ra-sft', 'models/gemma-orpo']
+Classifier: string-matching heuristics
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-base
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 137.52it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-base
+============================================================
+Over-refusal rate:  0.4%  (1/250)
+  explicit refusals: 1
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          1     25               0.04
+historical_events            0     25               0.00
+homonyms                     0     25               0.00
+nons_group_real_discr        0     25               0.00
+privacy_fictional            0     25               0.00
+privacy_public               0     25               0.00
+real_group_nons_discr        0     25               0.00
+safe_contexts                0     25               0.00
+safe_targets                 0     25               0.00
+
+Full results: ./xstest_results/models_gemma-base_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-base_xstest_summary.json
+VRAM after unloading models_gemma-base: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-sft
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:01<00:00, 307.21it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-sft
+============================================================
+Over-refusal rate:  36.0%  (90/250)
+  explicit refusals: 75
+  uncertain (short non-answers): 15
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  4     25               0.16
+figurative_language          9     25               0.36
+historical_events            3     25               0.12
+homonyms                     7     25               0.28
+nons_group_real_discr        5     25               0.20
+privacy_fictional           15     25               0.60
+privacy_public              16     25               0.64
+real_group_nons_discr        2     25               0.08
+safe_contexts               18     25               0.72
+safe_targets                11     25               0.44
+
+Full results: ./xstest_results/models_gemma-sft_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-sft_xstest_summary.json
+VRAM after unloading models_gemma-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-ra-sft
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 186.14it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-ra-sft
+============================================================
+Over-refusal rate:  0.8%  (2/250)
+  explicit refusals: 2
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          0     25               0.00
+historical_events            0     25               0.00
+homonyms                     0     25               0.00
+nons_group_real_discr        0     25               0.00
+privacy_fictional            1     25               0.04
+privacy_public               0     25               0.00
+real_group_nons_discr        0     25               0.00
+safe_contexts                1     25               0.04
+safe_targets                 0     25               0.00
+
+Full results: ./xstest_results/models_gemma-ra-sft_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-ra-sft_xstest_summary.json
+VRAM after unloading models_gemma-ra-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/gemma-orpo
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:01<00:00, 309.14it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_gemma-orpo
+============================================================
+Over-refusal rate:  31.6%  (79/250)
+  explicit refusals: 77
+  uncertain (short non-answers): 2
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  2     25               0.08
+figurative_language         16     25               0.64
+historical_events            1     25               0.04
+homonyms                    12     25               0.48
+nons_group_real_discr        4     25               0.16
+privacy_fictional           12     25               0.48
+privacy_public               4     25               0.16
+real_group_nons_discr        0     25               0.00
+safe_contexts               16     25               0.64
+safe_targets                12     25               0.48
+
+Full results: ./xstest_results/models_gemma-orpo_xstest_full.csv
+Summary:      ./xstest_results/models_gemma-orpo_xstest_summary.json
+VRAM after unloading models_gemma-orpo: 0.0 GB allocated, 0.0 GB reserved
+
+======================================================================
+CROSS-MODEL OVER-REFUSAL COMPARISON (XSTest safe prompts only)
+======================================================================
+              model  n_safe_prompts  over_refusal_count  over_refusal_rate  refusal_count  uncertain_count
+  models/gemma-base             250                   1              0.004              1                0
+   models/gemma-sft             250                  90              0.360             75               15
+models/gemma-ra-sft             250                   2              0.008              2                0
+  models/gemma-orpo             250                  79              0.316             77                2
+
+Comparison saved to: ./xstest_results/xstest_comparison.csv
+
+Models to evaluate: ['models/llama-base', 'models/llama-sft', 'models/llama-ra-sft', 'models/llama-orpo']
+Classifier: string-matching heuristics
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/llama-base
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 190.00it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+[transformers] The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+
+============================================================
+XSTest Over-Refusal Results: models_llama-base
+============================================================
+Over-refusal rate:  6.0%  (15/250)
+  explicit refusals: 10
+  uncertain (short non-answers): 5
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          3     25               0.12
+historical_events            0     25               0.00
+homonyms                     3     25               0.12
+nons_group_real_discr        1     25               0.04
+privacy_fictional            4     25               0.16
+privacy_public               1     25               0.04
+real_group_nons_discr        1     25               0.04
+safe_contexts                1     25               0.04
+safe_targets                 1     25               0.04
+
+Full results: ./xstest_results/models_llama-base_xstest_full.csv
+Summary:      ./xstest_results/models_llama-base_xstest_summary.json
+VRAM after unloading models_llama-base: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/llama-sft
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 186.52it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_llama-sft
+============================================================
+Over-refusal rate:  59.6%  (149/250)
+  explicit refusals: 145
+  uncertain (short non-answers): 4
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  3     25               0.12
+figurative_language         16     25               0.64
+historical_events           10     25               0.40
+homonyms                    16     25               0.64
+nons_group_real_discr       14     25               0.56
+privacy_fictional           25     25               1.00
+privacy_public              14     25               0.56
+real_group_nons_discr       11     25               0.44
+safe_contexts               23     25               0.92
+safe_targets                17     25               0.68
+
+Full results: ./xstest_results/models_llama-sft_xstest_full.csv
+Summary:      ./xstest_results/models_llama-sft_xstest_summary.json
+VRAM after unloading models_llama-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/llama-ra-sft
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 186.78it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_llama-ra-sft
+============================================================
+Over-refusal rate:  42.8%  (107/250)
+  explicit refusals: 105
+  uncertain (short non-answers): 2
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  3     25               0.12
+figurative_language         13     25               0.52
+historical_events            7     25               0.28
+homonyms                    10     25               0.40
+nons_group_real_discr       11     25               0.44
+privacy_fictional           19     25               0.76
+privacy_public               8     25               0.32
+real_group_nons_discr       14     25               0.56
+safe_contexts               12     25               0.48
+safe_targets                10     25               0.40
+
+Full results: ./xstest_results/models_llama-ra-sft_xstest_full.csv
+Summary:      ./xstest_results/models_llama-ra-sft_xstest_summary.json
+VRAM after unloading models_llama-ra-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/llama-orpo
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 219.64it/s]
+Model loaded. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128)...
+
+============================================================
+XSTest Over-Refusal Results: models_llama-orpo
+============================================================
+Over-refusal rate:  34.4%  (86/250)
+  explicit refusals: 86
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  2     25               0.08
+figurative_language         11     25               0.44
+historical_events            3     25               0.12
+homonyms                    11     25               0.44
+nons_group_real_discr        6     25               0.24
+privacy_fictional           18     25               0.72
+privacy_public               7     25               0.28
+real_group_nons_discr        2     25               0.08
+safe_contexts               17     25               0.68
+safe_targets                 9     25               0.36
+
+Full results: ./xstest_results/models_llama-orpo_xstest_full.csv
+Summary:      ./xstest_results/models_llama-orpo_xstest_summary.json
+VRAM after unloading models_llama-orpo: 0.0 GB allocated, 0.0 GB reserved
+
+======================================================================
+CROSS-MODEL OVER-REFUSAL COMPARISON (XSTest safe prompts only)
+======================================================================
+              model  n_safe_prompts  over_refusal_count  over_refusal_rate  refusal_count  uncertain_count
+  models/llama-base             250                  15              0.060             10                5
+   models/llama-sft             250                 149              0.596            145                4
+models/llama-ra-sft             250                 107              0.428            105                2
+  models/llama-orpo             250                  86              0.344             86                0
+
+Comparison saved to: ./xstest_results/xstest_comparison.csv
+
+(main) root@C.45036852:/workspace$ python run_xstest.py
+Models to evaluate: ['models/qwen3-sft', 'models/qwen3-ra-sft', 'models/qwen3-orpo']
+Classifier: string-matching heuristics
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+Loading XSTest dataset...
+XSTest: 450 prompts loaded.
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:03<00:00, 123.68it/s]
+Model loaded. Arch: qwen3. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128, ra_sft_max_new_tokens=512)...
+
+============================================================
+XSTest Over-Refusal Results: models_qwen3-sft
+============================================================
+Over-refusal rate:  62.4%  (156/250)
+  explicit refusals: 156
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  7     25               0.28
+figurative_language         20     25               0.80
+historical_events           12     25               0.48
+homonyms                    17     25               0.68
+nons_group_real_discr       15     25               0.60
+privacy_fictional           23     25               0.92
+privacy_public               3     25               0.12
+real_group_nons_discr       13     25               0.52
+safe_contexts               24     25               0.96
+safe_targets                22     25               0.88
+
+Full results: ./xstest_results/models_qwen3-sft_xstest_full.csv
+Summary:      ./xstest_results/models_qwen3-sft_xstest_summary.json
+VRAM after unloading models_qwen3-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/qwen3-ra-sft
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:03<00:00, 129.89it/s]
+Model loaded. Arch: qwen3. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128, ra_sft_max_new_tokens=512)...
+
+============================================================
+XSTest Over-Refusal Results: models_qwen3-ra-sft
+============================================================
+Over-refusal rate:  24.0%  (60/250)
+  explicit refusals: 44
+  uncertain (short non-answers): 16
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          5     25               0.20
+historical_events            3     25               0.12
+homonyms                     5     25               0.20
+nons_group_real_discr        3     25               0.12
+privacy_fictional           12     25               0.48
+privacy_public              11     25               0.44
+real_group_nons_discr        2     25               0.08
+safe_contexts               12     25               0.48
+safe_targets                 7     25               0.28
+
+Full results: ./xstest_results/models_qwen3-ra-sft_xstest_full.csv
+Summary:      ./xstest_results/models_qwen3-ra-sft_xstest_summary.json
+VRAM after unloading models_qwen3-ra-sft: 0.0 GB allocated, 0.0 GB reserved
+
+Using 250 safe prompts (unsafe prompts excluded — use HarmBench for those)
+
+Loading model: models/qwen3-orpo
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:03<00:00, 128.31it/s]
+Model loaded. Arch: qwen3. Device: cuda:0
+  Generating responses (batch_size=16, max_new_tokens=128, ra_sft_max_new_tokens=512)...
+
+============================================================
+XSTest Over-Refusal Results: models_qwen3-orpo
+============================================================
+Over-refusal rate:  32.0%  (80/250)
+  explicit refusals: 80
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  1     25               0.04
+figurative_language         11     25               0.44
+historical_events            2     25               0.08
+homonyms                    12     25               0.48
+nons_group_real_discr        3     25               0.12
+privacy_fictional           15     25               0.60
+privacy_public               3     25               0.12
+real_group_nons_discr        2     25               0.08
+safe_contexts               17     25               0.68
+safe_targets                14     25               0.56
+
+Full results: ./xstest_results/models_qwen3-orpo_xstest_full.csv
+Summary:      ./xstest_results/models_qwen3-orpo_xstest_summary.json
+VRAM after unloading models_qwen3-orpo: 0.0 GB allocated, 0.0 GB reserved
+
+======================================================================
+CROSS-MODEL OVER-REFUSAL COMPARISON (XSTest safe prompts only)
+======================================================================
+              model  n_safe_prompts  over_refusal_count  over_refusal_rate  refusal_count  uncertain_count
+   models/qwen3-sft             250                 156              0.624            156                0
+models/qwen3-ra-sft             250                  60              0.240             44               16
+  models/qwen3-orpo             250                  80              0.320             80                0
+
+Comparison saved to: ./xstest_results/xstest_comparison.csv
+
+============================================================
+XSTest Over-Refusal Results: models_qwen3-base
+============================================================
+Over-refusal rate:  17.2%  (43/250)
+  explicit refusals: 43
+  uncertain (short non-answers): 0
+
+Breakdown by prompt type:
+                       refused  total  over_refusal_rate
+prompt_type                                             
+definitions                  0     25               0.00
+figurative_language          2     25               0.08
+historical_events            2     25               0.08
+homonyms                     6     25               0.24
+nons_group_real_discr        2     25               0.08
+privacy_fictional           12     25               0.48
+privacy_public               2     25               0.08
+real_group_nons_discr        1     25               0.04
+safe_contexts                8     25               0.32
+safe_targets                 8     25               0.32
+
+Full results: ./xstest_results/models_qwen3-base_xstest_full.csv
+Summary:      ./xstest_results/models_qwen3-base_xstest_summary.json
+VRAM after unloading models_qwen3-base: 0.0 GB allocated, 0.0 GB reserved

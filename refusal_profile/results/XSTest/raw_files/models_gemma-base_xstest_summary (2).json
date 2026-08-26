@@ -1,0 +1,8 @@
+{
+  "model": "models/gemma-base",
+  "n_safe_prompts": 250,
+  "over_refusal_count": 1,
+  "over_refusal_rate": 0.004,
+  "refusal_count": 1,
+  "uncertain_count": 0
+}

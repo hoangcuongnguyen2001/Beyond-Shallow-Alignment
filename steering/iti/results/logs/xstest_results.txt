@@ -1,0 +1,56 @@
+python run_xstest_iti.py \
+  --model_path models/gemma-orpo \
+  --tokenizer_path models/gemma-orpo \
+  --model_name gemma_orpo \
+  --probe_path results/phase3/gemma-orpo/iti_probes_head12.pt \
+  --target_heads 40:12 \
+  --alphas 5 10 \
+  --batch_size 1 \
+  --output_dir results/xstest_iti/gemma-orpo
+
+(main) root@C.36734649:/workspace$ python run_xstest_iti.py   --model_path models/gemma-orpo   --tokenizer_path models/gemma-orpo   --model_name gemma_orpo   --probe_path results/phase3/gemma-orpo/iti_probes_head12.pt   --target_heads 40:12   --alphas 5 10   --batch_size 1   --output_dir results/xstest_iti/gemma-orpo
+Loaded XSTest safe prompts: 250
+Model family: gemma
+Target heads: ['40:12']
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 124.12it/s]
+Loading ITI probes: results/phase3/gemma-orpo/iti_probes_head12.pt
+Generating XSTest ITI alpha=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:26<00:00,  2.98s/it]
+alpha=5.0: over-refusal=0.3080 (77/250), SE=0.0292
+Generating XSTest ITI alpha=10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:27<00:00,  2.99s/it]
+alpha=10.0: over-refusal=0.3000 (75/250), SE=0.0290
+Saved combined results: results/xstest_iti/gemma-orpo/gemma_orpo_xstest_iti_alphas_5p0_10p0.json
+python run_xstest_iti.py   --model_path models/gemma-orpo   --tokenizer_path models/gemma-orpo   --model_name gemma_orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12   --alphas -5 -10   --batch_size 1   --output_dir results/xstest_iti/gemma-orpo
+
+(main) root@C.36921856:/workspace$ python run_xstest_iti.py \
+  --model_path models/gemma-orpo \
+  --tokenizer_path models/gemma-orpo \
+  --model_name gemma_orpo \
+  --probe_path iti_probes_head12.pt \
+  --target_heads 40:12 \
+  --alphas 0 -5 -10 -15 -20 \
+  --batch_size 1 \
+  --output_dir results/xstest_iti/gemma-orpo
+Loaded XSTest safe prompts: 250
+Model family: gemma
+Target heads: ['40:12']
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 182.95it/s]
+Loading ITI probes: iti_probes_head12.pt
+Generating XSTest ITI alpha=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:26<00:00,  2.98s/it]
+alpha=0.0: over-refusal=0.3080 (77/250), SE=0.0292
+Generating XSTest ITI alpha=-5.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:30<00:00,  3.00s/it]
+alpha=-5.0: over-refusal=0.3120 (78/250), SE=0.0293
+Generating XSTest ITI alpha=-10.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:35<00:00,  3.02s/it]
+alpha=-10.0: over-refusal=0.3200 (80/250), SE=0.0295
+Generating XSTest ITI alpha=-15.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:41<00:00,  3.05s/it]
+alpha=-15.0: over-refusal=0.3200 (80/250), SE=0.0295
+Generating XSTest ITI alpha=-20.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:52<00:00,  3.09s/it]
+alpha=-20.0: over-refusal=0.3320 (83/250), SE=0.0298
+Saved combined results: results/xstest_iti/gemma-orpo/gemma_orpo_xstest_iti_alphas_0p0_neg5p0_neg10p0_neg15p0_neg20p0.json

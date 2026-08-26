@@ -1,0 +1,22 @@
+{
+  "model_name": "gemma-ra-sft",
+  "target_layers": [
+    27,
+    37,
+    28,
+    40,
+    39
+  ],
+  "alphas": [
+    15.0,
+    20.0
+  ],
+  "results": {
+    "15.0": {
+      "mmlu_accuracy": 0.42
+    },
+    "20.0": {
+      "mmlu_accuracy": 0.405
+    }
+  }
+}

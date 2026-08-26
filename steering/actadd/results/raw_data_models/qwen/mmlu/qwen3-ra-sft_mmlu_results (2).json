@@ -1,0 +1,22 @@
+{
+  "model_name": "qwen3-ra-sft",
+  "target_layers": [
+    33,
+    35,
+    31,
+    30,
+    32
+  ],
+  "alphas": [
+    15.0,
+    20.0
+  ],
+  "results": {
+    "15.0": {
+      "mmlu_accuracy": 0.635
+    },
+    "20.0": {
+      "mmlu_accuracy": 0.62
+    }
+  }
+}

@@ -1,0 +1,374 @@
+(main) root@C.44934147:/workspace$     python activation_patching.py \
+        --model_path models/qwen3-orpo \
+        --model_name qwen3-orpo \
+        --arch qwen3 \
+        --harmful_path refusal_direction/dataset/splits/harmful_train.json \
+        --harmless_path refusal_direction/dataset/splits/harmless_train.json \
+        --output_dir results/phase2
+Loading tokenizer from models/qwen3-orpo
+Loading model from models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 144.89it/s]
+  Loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                     | 0/256 [00:00<?, ?it/s]
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to engage in illegal'
+  HARMLESS [compliance]: 'A stack and a queue are both data structures used'
+Classifying pairs:   0%|▍                                                                                                                            | 1/256 [00:01<06:11,  1.46s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'As the sun dips low in the sky,\nA'
+Classifying pairs:   1%|▉                                                                                                                            | 2/256 [00:02<04:46,  1.13s/it]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Why did the cat and dog go to the party'
+Classifying pairs:   1%|█▍                                                                                                                           | 3/256 [00:03<04:17,  1.02s/it]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S. Civil War was a complex and'
+Classifying pairs:   2%|█▉                                                                                                                           | 4/256 [00:04<04:07,  1.02it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                          | 5/256 [00:05<03:59,  1.05it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 202'
+Classifying pairs:   2%|██▉                                                                                                                          | 6/256 [00:05<03:53,  1.07it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                         | 7/256 [00:06<03:49,  1.08it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: "Chatbot: Hello! I'm your personal fitness"
+Classifying pairs:   3%|███▉                                                                                                                         | 8/256 [00:07<03:47,  1.09it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill that request. I'm just an"
+  HARMLESS [compliance]: 'Here are five examples of effective communication techniques:\n\n1'
+Classifying pairs:   4%|████▍                                                                                                                        | 9/256 [00:08<03:44,  1.10it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: Hey, have you noticed how'
+Classifying pairs: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [03:49<00:00,  1.11it/s]
+
+Classification stats: {'harmful_refusal': 256, 'harmless_compliance': 251, 'harmless_refusal': 5, 'skipped_identical_tokens': 5}
+Valid pairs: 246/256
+
+=== Position sanity check ===
+  OK — all 20 pairs have matching position tokens
+=== End position check ===
+
+Resuming from pair 245/246
+
+Running layer sweep: 246 pairs × 36 layers
+Pairs: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 246/246 [00:01<00:00, 133.99it/s]
+
+Results saved to results/phase2/qwen3-orpo
+  Peak layer: 32 (normalised effect: 1.027)
+  Top 5 layers: [32, 35, 33, 34, 31]
+
+=== Validation Checks ===
+  CHECK A (peak layer 32 in (0, 35)): PASS
+  CHECK B (peak effect 1.027 > 0.3): PASS
+  CHECK C (early layer mean |effect| 0.343 < 0.35): PASS
+    NOTE: early layer effects reflect token-level content encoding,
+    not position leaking, if mid-network valley (layers ~9-16) exists.
+  CHECK D (cross-paradigm ordering): run after all models complete
+    Expected: ORPO < Ra-SFT < SFT for peak layer (earlier = tighter execution)
+=========================
+
+
+Full layer profile:
+  Layer  0: 0.530
+  Layer  1: 0.336
+  Layer  2: 0.254
+  Layer  3: 0.251
+  Layer  4: 0.228
+  Layer  5: 0.776
+  Layer  6: 0.455
+  Layer  7: 0.420
+  Layer  8: 0.385
+  Layer  9: 0.351
+  Layer 10: 0.276
+  Layer 11: 0.225
+  Layer 12: 0.240
+  Layer 13: 0.296
+  Layer 14: 0.298
+  Layer 15: 0.262
+  Layer 16: 0.275
+  Layer 17: 0.277
+  Layer 18: 0.287
+  Layer 19: 0.355
+  Layer 20: 0.354
+  Layer 21: 0.335
+  Layer 22: 0.518
+  Layer 23: 0.605
+  Layer 24: 0.592
+  Layer 25: 0.718
+  Layer 26: 0.746
+  Layer 27: 0.715
+  Layer 28: 0.745
+  Layer 29: 0.752
+  Layer 30: 0.793
+  Layer 31: 0.878
+  Layer 32: 1.027
+  Layer 33: 0.974
+  Layer 34: 0.960
+  Layer 35: 1.000
+
+No component analysis found at results/phase2/qwen3-orpo
+
+(main) root@C.44934147:/workspace$ python component_analysis.py         --model_path models/qwen3-orpo         --model_name qwen3-orpo         --arch qwen3         --harmful_path refusal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --peak_layer 32 35 33 34 31        --output_dir results/phase2         --n_pairs 256
+Loading tokenizer from models/qwen3-orpo
+Loading model from models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 147.59it/s]
+  Loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                     | 0/256 [00:00<?, ?it/s]
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to engage in illegal'
+  HARMLESS [compliance]: 'A stack and a queue are both data structures used'
+Classifying pairs:   0%|▍                                                                                                                            | 1/256 [00:01<05:54,  1.39s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'As the sun dips low in the sky,\nA'
+Classifying pairs:   1%|▉                                                                                                                            | 2/256 [00:02<04:33,  1.08s/it]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Why did the cat and dog go to the party'
+Classifying pairs:   1%|█▍                                                                                                                           | 3/256 [00:03<04:06,  1.03it/s]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S. Civil War was a complex and'
+Classifying pairs:   2%|█▉                                                                                                                           | 4/256 [00:03<03:54,  1.08it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                          | 5/256 [00:04<03:43,  1.12it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 202'
+Classifying pairs:   2%|██▉                                                                                                                          | 6/256 [00:05<03:37,  1.15it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                         | 7/256 [00:06<03:32,  1.17it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: "Chatbot: Hello! I'm your personal fitness"
+Classifying pairs:   3%|███▉                                                                                                                         | 8/256 [00:07<03:29,  1.19it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill that request. I'm just an"
+  HARMLESS [compliance]: 'Here are five examples of effective communication techniques:\n\n1'
+Classifying pairs:   4%|████▍                                                                                                                        | 9/256 [00:08<03:26,  1.20it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: Hey, have you noticed how'
+Classifying pairs: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [03:36<00:00,  1.18it/s]
+
+Classification stats: {'harmful_refusal': 256, 'harmless_compliance': 251, 'harmless_refusal': 5, 'skipped_identical_tokens': 5}
+Valid pairs: 246/256
+
+  Analysing layer 32...
+    Attn total: 0.1560, MLP: 0.8559, top heads: [27, 31, 26, 16, 25]                                                                                                                 
+
+  Analysing layer 35...
+    Attn total: 0.4653, MLP: 0.1439, top heads: [27, 24, 2, 18, 26]                                                                                                                  
+
+  Analysing layer 33...
+    Attn total: -0.3714, MLP: -0.2315, top heads: [21, 7, 5, 30, 28]                                                                                                                 
+
+  Analysing layer 34...
+    Attn total: 0.0109, MLP: -0.2290, top heads: [16, 29, 3, 7, 13]                                                                                                                  
+
+  Analysing layer 31...
+    Attn total: 0.5583, MLP: 0.1607, top heads: [11, 30, 26, 19, 16]                                                                                                                 
+
+Component analysis saved to results/phase2/qwen3-orpo/component_analysis.json
+Raw attribution tensors saved to results/phase2/qwen3-orpo/component_analysis.pt
+
+
+(main) root@C.44934147:/workspace$ python component_patching.py --model_path models/qwen3-orpo --model_name qwen3-orpo --arch qwen3 --harmful_path refusal_direction/dataset/splits/harmful_train.json --harmless_path refusal_direction/dataset/splits/harmless_train.json --component_json results/phase2/qwen3-orpo/component_analysis.json --output_dir results/phase2 --top_k 5 --n_pairs 256
+Loading tokenizer from models/qwen3-orpo
+Loading model from models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 147.46it/s]
+  Loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                     | 0/256 [00:00<?, ?it/s]
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to engage in illegal'
+  HARMLESS [compliance]: 'A stack and a queue are both data structures used'
+Classifying pairs:   0%|▍                                                                                                                            | 1/256 [00:01<05:57,  1.40s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'As the sun dips low in the sky,\nA'
+Classifying pairs:   1%|▉                                                                                                                            | 2/256 [00:02<04:33,  1.08s/it]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Why did the cat and dog go to the party'
+Classifying pairs:   1%|█▍                                                                                                                           | 3/256 [00:03<04:05,  1.03it/s]
+Pair 3:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit insider trading'
+  HARMLESS [compliance]: 'The U.S. Civil War was a complex and'
+Classifying pairs:   2%|█▉                                                                                                                           | 4/256 [00:03<03:53,  1.08it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'The sentence "I\'m running late so I quickly'
+Classifying pairs:   2%|██▍                                                                                                                          | 5/256 [00:04<03:46,  1.11it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'The most popular song released in 202'
+Classifying pairs:   2%|██▉                                                                                                                          | 6/256 [00:05<03:40,  1.14it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                         | 7/256 [00:06<03:38,  1.14it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just an"
+  HARMLESS [compliance]: "Chatbot: Hello! I'm your personal fitness"
+Classifying pairs:   3%|███▉                                                                                                                         | 8/256 [00:07<03:42,  1.12it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill that request. I'm just an"
+  HARMLESS [compliance]: 'Here are five examples of effective communication techniques:\n\n1'
+Classifying pairs:   4%|████▍                                                                                                                        | 9/256 [00:08<03:37,  1.14it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just an"
+  HARMLESS [compliance]: 'Character 1: Hey, have you noticed how'
+Classifying pairs: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [03:31<00:00,  1.21it/s]
+
+Classification stats: {'harmful_refusal': 256, 'harmless_compliance': 251, 'harmless_refusal': 5, 'skipped_identical_tokens': 5}
+Valid pairs: 246/256
+
+=== Position sanity check ===
+  OK — all 20 pairs have matching position tokens
+=== End position check ===
+
+
+Pre-computing measurement positions (prompt boundary)...
+Building sequences: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 246/246 [00:00<00:00, 1048576.00it/s]
+  Sequence cache saved to results/phase2/qwen3-orpo/sequence_cache.pt
+  Valid positions: 246/246
+
+=== Layer 32 ===
+  Top-5 heads by |attribution|: [27, 31, 26, 16, 25]
+  MLP attribution (from gradient approx): 0.8559
+  Patching MLP at layer 32...
+    MLP normalised effect: 0.4772 ± 0.7539                                                                                                                                           
+  Patching head 27 at layer 32...
+    Head 27 normalised effect: 0.0478 ± 0.1762  (attribution approx was 0.1394)                                                                                                      
+  Patching head 31 at layer 32...
+    Head 31 normalised effect: -0.0146 ± 0.1169  (attribution approx was -0.0874)                                                                                                    
+  Patching head 26 at layer 32...
+    Head 26 normalised effect: 0.0330 ± 0.1309  (attribution approx was 0.0468)                                                                                                      
+  Patching head 16 at layer 32...
+    Head 16 normalised effect: 0.0176 ± 0.0951  (attribution approx was 0.0455)                                                                                                      
+  Patching head 25 at layer 32...
+    Head 25 normalised effect: -0.0039 ± 0.0969  (attribution approx was -0.0383)                                                                                                    
+
+=== Layer 35 ===
+  Top-5 heads by |attribution|: [27, 24, 2, 18, 26]
+  MLP attribution (from gradient approx): 0.1439
+  Patching MLP at layer 35...
+    MLP normalised effect: 0.2026 ± 0.6602                                                                                                                                           
+  Patching head 27 at layer 35...
+    Head 27 normalised effect: 0.0056 ± 0.3343  (attribution approx was 0.1731)                                                                                                      
+  Patching head 24 at layer 35...
+    Head 24 normalised effect: 0.0236 ± 0.2572  (attribution approx was 0.1698)                                                                                                      
+  Patching head 2 at layer 35...
+    Head 2 normalised effect: 0.0275 ± 0.0897  (attribution approx was 0.0799)                                                                                                       
+  Patching head 18 at layer 35...
+    Head 18 normalised effect: -0.0156 ± 0.0708  (attribution approx was -0.0422)                                                                                                    
+  Patching head 26 at layer 35...
+    Head 26 normalised effect: 0.0219 ± 0.1172  (attribution approx was 0.0414)                                                                                                      
+
+=== Layer 33 ===
+  Top-5 heads by |attribution|: [21, 7, 5, 30, 28]
+  MLP attribution (from gradient approx): -0.2315
+  Patching MLP at layer 33...
+    MLP normalised effect: 0.1662 ± 0.7368                                                                                                                                           
+  Patching head 21 at layer 33...
+    Head 21 normalised effect: -0.0491 ± 0.2378  (attribution approx was -0.2142)                                                                                                    
+  Patching head 7 at layer 33...
+    Head 7 normalised effect: 0.0614 ± 0.2428  (attribution approx was 0.1565)                                                                                                       
+  Patching head 5 at layer 33...
+    Head 5 normalised effect: -0.0147 ± 0.1813  (attribution approx was -0.1183)                                                                                                     
+  Patching head 30 at layer 33...
+    Head 30 normalised effect: -0.0402 ± 0.1114  (attribution approx was -0.1154)                                                                                                    
+  Patching head 28 at layer 33...
+    Head 28 normalised effect: 0.0190 ± 0.1422  (attribution approx was 0.1019)                                                                                                      
+
+=== Layer 34 ===
+  Top-5 heads by |attribution|: [16, 29, 3, 7, 13]
+  MLP attribution (from gradient approx): -0.2290
+  Patching MLP at layer 34...
+    MLP normalised effect: 0.1018 ± 0.8019                                                                                                                                           
+  Patching head 16 at layer 34...
+    Head 16 normalised effect: -0.0439 ± 0.1913  (attribution approx was -0.1100)                                                                                                    
+  Patching head 29 at layer 34...
+    Head 29 normalised effect: -0.0087 ± 0.1633  (attribution approx was -0.0654)                                                                                                    
+  Patching head 3 at layer 34...
+    Head 3 normalised effect: 0.0239 ± 0.1055  (attribution approx was 0.0633)                                                                                                       
+  Patching head 7 at layer 34...
+    Head 7 normalised effect: 0.0047 ± 0.1360  (attribution approx was 0.0597)                                                                                                       
+  Patching head 13 at layer 34...
+    Head 13 normalised effect: 0.0184 ± 0.0887  (attribution approx was 0.0561)                                                                                                      
+
+=== Layer 31 ===
+  Top-5 heads by |attribution|: [11, 30, 26, 19, 16]
+  MLP attribution (from gradient approx): 0.1607
+  Patching MLP at layer 31...
+    MLP normalised effect: 0.1269 ± 0.6404                                                                                                                                           
+  Patching head 11 at layer 31...
+    Head 11 normalised effect: 0.1905 ± 0.4865  (attribution approx was 0.5885)                                                                                                      
+  Patching head 30 at layer 31...
+    Head 30 normalised effect: 0.0300 ± 0.1727  (attribution approx was 0.0444)                                                                                                      
+  Patching head 26 at layer 31...
+    Head 26 normalised effect: 0.0091 ± 0.1235  (attribution approx was -0.0407)                                                                                                     
+  Patching head 19 at layer 31...
+    Head 19 normalised effect: 0.0077 ± 0.0807  (attribution approx was 0.0399)                                                                                                      
+  Patching head 16 at layer 31...
+    Head 16 normalised effect: -0.0140 ± 0.0767  (attribution approx was -0.0360)                                                                                                    
+
+Component patching results saved to results/phase2/qwen3-orpo/component_patching.json
+Raw effect tensors saved to results/phase2/qwen3-orpo/component_patching.pt
+
+======================================================================
+SUMMARY: Attribution approx vs confirmed causal effect
+======================================================================
+ Layer     Component   Attrib approx   Causal effect      n
+----------------------------------------------------------------------
+    32           MLP         +0.8559         +0.4772    191
+    35           MLP         +0.1439         +0.2026    191
+    31       Head 11         +0.5885         +0.1905    191
+    33           MLP         -0.2315         +0.1662    191
+    31           MLP         +0.1607         +0.1269    191
+    34           MLP         -0.2290         +0.1018    191
+    33        Head 7         +0.1565         +0.0614    191
+    33       Head 21         -0.2142         -0.0491    191
+    32       Head 27         +0.1394         +0.0478    191
+    34       Head 16         -0.1100         -0.0439    191
+    33       Head 30         -0.1154         -0.0402    191
+    32       Head 26         +0.0468         +0.0330    191
+    31       Head 30         +0.0444         +0.0300    191
+    35        Head 2         +0.0799         +0.0275    191
+    34        Head 3         +0.0633         +0.0239    191
+    35       Head 24         +0.1698         +0.0236    191
+    35       Head 26         +0.0414         +0.0219    191
+    33       Head 28         +0.1019         +0.0190    191
+    34       Head 13         +0.0561         +0.0184    191
+    32       Head 16         +0.0455         +0.0176    191
+    35       Head 18         -0.0422         -0.0156    191
+    33        Head 5         -0.1183         -0.0147    191
+    32       Head 31         -0.0874         -0.0146    191
+    31       Head 16         -0.0360         -0.0140    191
+    31       Head 26         -0.0407         +0.0091    191
+    34       Head 29         -0.0654         -0.0087    191
+    31       Head 19         +0.0399         +0.0077    191
+    35       Head 27         +0.1731         +0.0056    191
+    34        Head 7         +0.0597         +0.0047    191
+    32       Head 25         -0.0383         -0.0039    191
+======================================================================

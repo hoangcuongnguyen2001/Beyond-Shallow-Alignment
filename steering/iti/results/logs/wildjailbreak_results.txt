@@ -1,0 +1,264 @@
+python gemma_iti_pipeline.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --target_heads 38:15 \
+  --probe_path results/phase3/gemma_sft/iti_probes.pt \
+  --fit_harmful_prompts refusal_direction/dataset/splits/harmful_train.json \
+  --fit_harmless_prompts refusal_direction/dataset/splits/harmless_train.json \
+  --eval_harmful_prompts datasets/wildjailbreak_250.jsonl \
+  --eval_harmless_prompts datasets/xstest_safe.jsonl \
+  --fit_n 256 \
+  --probe_path results/phase3/gemma-sft/iti_probes.pt \
+  --fit_only
+
+
+python llama_iti_pipeline.py \
+  --model_path models/llama-sft \
+  --tokenizer_path workspace/tokenizer/llama-3.1-8b-tokenizer \
+  --model_name llama-sft \
+  --target_heads 30:25 \
+  --fit_harmful_prompts refusal_direction/dataset/splits/harmful_train.json \
+  --fit_harmless_prompts refusal_direction/dataset/splits/harmless_train.json \
+  --fit_n 256 \
+  --probe_path results/phase3/llama-sft/iti_probes.pt
+
+python wildjailbreak_iti.py \
+  --model_path models/llama-sft \
+  --tokenizer_path workspace/tokenizer/llama-3.1-8b-tokenizer \
+  --model_family llama \
+  --model_name llama-sft \
+  --probe_path results/phase3/llama-sft/iti_probes.pt \
+  --target_heads 30:25 \
+  --alpha 0 \
+  --toward_refusal_sign -1 \
+  --batch_size 1 \
+  --judge_batch_size 1 \
+  --max_new_tokens 128 \
+  --max_length 1024 \
+  --judge_max_length 1024 \
+  --wildjailbreak_path datasets/wildjailbreak_250.jsonl \
+  --judge_model_path models/llama-guard \
+  --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer
+
+
+ 
+
+python wildjailbreak_iti.py \
+  --model_path models/gemma-sft \
+  --model_name gemma-sft \
+  --probe_path results/phase3/gemma-sft/iti_probes_layer40.pt \
+  --target_heads 40:14 \
+  --alpha 5 \
+  --wildjailbreak_path datasets/wildjailbreak_250.jsonl \
+  --judge_model_path models/llama-guard \
+  --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer \
+  --batch_size 1 \
+  --judge_batch_size 1 \
+  --max_new_tokens 128 \
+  --max_length 1024 \
+  --output_dir results/wildjailbreak_iti/gemma-sft
+
+
+(main) root@C.36734649:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path results/phase3/gemma-sft/iti_probes.pt   --target_heads 37:15 38:15   --alpha 5   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamagua
+rd3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 110.80it/s]
+Generating ITI alpha=5.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [16:08<00:00,  3.88s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.56it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:32<00:00,  7.79it/s]
+
+ASR: 0.3920 (39.20%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha5p0.json
+(main) root@C.36734649:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path results/phase3/gemma-sft/iti_probes.pt   --target_heads 37:15 38:15   --alpha 10   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamagu
+ard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 109.41it/s]
+Generating ITI alpha=10.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [16:34<00:00,  3.98s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 87.35it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:31<00:00,  7.85it/s]
+
+ASR: 0.3760 (37.60%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha10p0.json
+
+
+(main) root@C.36734649:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path results/phase3/gemma-orpo/iti_probes_head12.pt   --target_heads 40:12   --alpha -10   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/ll
+amaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-orpo
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 135.47it/s]
+Generating ITI alpha=-10.0:  25%|████████-5   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokeniz
+er/llama
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 135.10it/s]
+Generating ITI alpha=-5.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [11:47<00:00,  2.83s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 85.97it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:25<00:00,  9.95it/s]
+
+ASR: 0.0400 (4.00%)
+Saved → results/wildjailbreak_iti/gemma-orpo/gemma-orpo_iti_alphaneg5p0.json
+(main) root@C.36734649:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path results/phase3/gemma-orpo/iti_probes_head12.pt   --target_heads 40:12   --alpha -10   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-orpo
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 135.47it/s]
+Generating ITI alpha=-10.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [11:54<00:00,  2.86s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:03<00:00, 85.53it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:25<00:00,  9.86it/s]
+
+ASR: 0.0480 (4.80%)
+Saved → results/wildjailbreak_iti/gemma-orpo/gemma-orpo_iti_alphaneg10p0.json
+(main) root@C.36921856:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12   --alpha -15   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-orpo
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 215.75it/s]
+Generating ITI alpha=-15.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:06<00:00,  2.91s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 188.50it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:25<00:00,  9.94it/s]
+
+ASR: 0.0400 (4.00%)
+Saved → results/wildjailbreak_iti/gemma-orpo/gemma-orpo_iti_alphaneg15p0.json
+(main) root@C.36921856:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12   --alpha -20   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --ba
+tch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-orpo
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 203.62it/s]
+Generating ITI alpha=-20.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [12:08<00:00,  2.91s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 168.57it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:24<00:00, 10.03it/s]
+
+ASR: 0.0400 (4.00%)
+Saved → results/wildjailbreak_iti/gemma-orpo/gemma-orpo_iti_alphaneg20p0.json
+
+(main) root@C.36734649:/workspace$ python mmlu_iti.py \
+  --model_path models/gemma-orpo \
+  --model_name gemma-orpo \
+  --probe_path iti_probes_head12.pt \
+  --target_heads 40:12  \
+  --mmlu_path datasets/mmlu_200.jsonl \
+  --alphas -5 -10 \
+  --batch_size 1 \
+  --output_dir results/mmlu_iti/gemma-orpo
+Loaded 200 MMLU samples from datasets/mmlu_200.jsonl
+Loading tokenizer: models/gemma-orpo
+Loading model: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 135.58it/s]
+MMLU ITI alpha=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:05<00:00,  3.06it/s]
+alpha=5.0: accuracy=0.4050 (81/200)
+MMLU ITI alpha=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [01:04<00:00,  3.09it/s]
+alpha=10.0: accuracy=0.4050 (81/200)
+Saved → results/mmlu_iti/gemma-orpo/gemma-orpo_mmlu_iti_alphas_5p0_10p0.json
+
+
+(main) root@C.36791062:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path results/phase3/gemma-sft/iti_probes_layer40.pt   --target_heads 40:14   --alpha 10   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llama
+guard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 177.06it/s]
+Generating ITI alpha=10.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [20:04<00:00,  4.82s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 120.25it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:37<00:00,  6.58it/s]
+
+ASR: 0.3720 (37.20%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha10p0.json
+
+python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path iti_probes_layer40.pt   --target_heads 40:14   --alpha 15   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 122.95it/s]
+Generating ITI alpha=15.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [15:53<00:00,  3.82s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 148.88it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:31<00:00,  8.06it/s]
+
+ASR: 0.3520 (35.20%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha15p0.json
+
+
+(main) root@C.36921856:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path iti_probes_layer40.pt   --target_heads 40:14   --alpha 5   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch
+_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 194.98it/s]
+Generating ITI alpha=5.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [15:41<00:00,  3.77s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 142.17it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:31<00:00,  8.02it/s]
+
+ASR: 0.3680 (36.80%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha5p0.json
+(main) root@C.36921856:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path iti_probes_layer40.pt   --target_heads 40:14   --alpha 0   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch
+_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 190.56it/s]
+Generating ITI alpha=0.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [15:48<00:00,  3.79s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:01<00:00, 160.64it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:31<00:00,  8.03it/s]
+
+ASR: 0.3600 (36.00%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha0p0.json
+(main) root@C.36921856:/workspace$ python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path iti_probes_layer40.pt   --target_heads 40:14   --alpha 20   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batc
+h_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+Loaded 250 prompts from datasets/wildjailbreak_250.jsonl
+Loading target model: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 186.88it/s]
+Generating ITI alpha=20.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [15:50<00:00,  3.80s/it]
+Loading judge: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 145.21it/s]
+Judging with LlamaGuard:   0%|                                                                                                                                | 0/250 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging with LlamaGuard: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 250/250 [00:30<00:00,  8.07it/s]
+
+ASR: 0.3560 (35.60%)
+Saved → results/wildjailbreak_iti/gemma-sft/gemma-sft_iti_alpha20p0.json
+
+python wildjailbreak_iti.py   --model_path models/gemma-sft   --model_name gemma-sft   --probe_path iti_probes_layer40.pt   --target_heads 40:14   --alpha 15   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-sft
+0.356
+
+
+python wildjailbreak_iti.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --probe_path iti_probes_head12.pt   --target_heads 40:12   --alpha -15   --wildjailbreak_path datasets/wildjailbreak_250.jsonl   --judge_model_path models/llama-guard   --judge_tokenizer_path workspace/tokenizer/llamaguard3-tokenizer   --batch_size 1   --judge_batch_size 1   --max_new_tokens 128   --max_length 1024   --output_dir results/wildjailbreak_iti/gemma-orpo

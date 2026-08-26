@@ -1,0 +1,202 @@
+[MAIN] Phase 1 — running: ['gemma-base', 'gemma-sft', 'gemma-ra-sft', 'gemma-orpo']
+
+[DATA] Loading Arditi dataset...
+[DATA] Train split sizes: 260 harmful, 18793 harmless
+[DATA] Using 256 pairs for direction extraction
+[DATA] Example harmful:  Suggest methods for hacking into a financial institution's website and stealing ...
+[DATA] Example harmless: Can you recommend a chocolate cake recipe for two?...
+
+============================================================
+[MAIN] Starting: gemma-base (gemma)
+============================================================
+
+[gemma-base] arch=gemma, is_base=True
+  [LOAD] models/gemma-base
+  [LOAD] Expected: 42 layers, d_model=3584
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:09<00:00, 51.01it/s]
+  [LOAD] Actual: 42 layers, d_model=3584
+  [LOAD] VRAM after load: 18.5GB
+[gemma-base] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-base] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-base] VRAM after model free: 0.0GB
+[gemma-base] Computing magnitude profile...
+[gemma-base] Computing directions...
+[gemma-base] Computing stability...
+[gemma-base] Computing representation cosine similarity...
+[gemma-base] Peak layer: (1,)
+[gemma-base] Top 5 layers: ([1, 41, 3, 0, 4],)
+[HF] Pushing incremental results...
+Processing Files (1 / 1)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB,  172kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB,  172kB/s  
+  .../gemma-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: gemma-sft (gemma)
+============================================================
+
+[gemma-sft] arch=gemma, is_base=False
+  [LOAD] models/gemma-sft
+  [LOAD] Expected: 42 layers, d_model=3584
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 104.71it/s]
+  [LOAD] Actual: 42 layers, d_model=3584
+  [LOAD] VRAM after load: 18.5GB
+[gemma-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-sft] VRAM after model free: 0.0GB
+[gemma-sft] Computing magnitude profile...
+[gemma-sft] Computing directions...
+[gemma-sft] Computing stability...
+[gemma-sft] Computing representation cosine similarity...
+[gemma-sft] Peak layer: (28,)
+[gemma-sft] Top 5 layers: ([28, 30, 29, 31, 26],)
+[HF] Pushing incremental results...
+Processing Files (2 / 2)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.24MB / 1.24MB,  207kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB,  207kB/s  
+  .../gemma-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  ...1/gemma-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: gemma-ra-sft (gemma)
+============================================================
+
+[gemma-ra-sft] arch=gemma, is_base=False
+  [LOAD] models/gemma-ra-sft
+  [LOAD] Expected: 42 layers, d_model=3584
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 105.27it/s]
+  [LOAD] Actual: 42 layers, d_model=3584
+  [LOAD] VRAM after load: 18.5GB
+[gemma-ra-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-ra-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-ra-sft] VRAM after model free: 0.0GB
+[gemma-ra-sft] Computing magnitude profile...
+[gemma-ra-sft] Computing directions...
+[gemma-ra-sft] Computing stability...
+[gemma-ra-sft] Computing representation cosine similarity...
+[gemma-ra-sft] Peak layer: (25,)
+[gemma-ra-sft] Top 5 layers: ([25, 24, 37, 26, 36],)
+[HF] Pushing incremental results...
+Processing Files (3 / 3)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.86MB / 1.86MB,  194kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB,  194kB/s  
+  .../gemma-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  ...1/gemma-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  ...emma-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+[HF] Done.
+
+============================================================
+[MAIN] Starting: gemma-orpo (gemma)
+============================================================
+
+[gemma-orpo] arch=gemma, is_base=False
+  [LOAD] models/gemma-orpo
+  [LOAD] Expected: 42 layers, d_model=3584
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 109.49it/s]
+  [LOAD] Actual: 42 layers, d_model=3584
+  [LOAD] VRAM after load: 18.5GB
+[gemma-orpo] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-orpo] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[gemma-orpo] VRAM after model free: 0.0GB
+[gemma-orpo] Computing magnitude profile...
+[gemma-orpo] Computing directions...
+[gemma-orpo] Computing stability...
+[gemma-orpo] Computing representation cosine similarity...
+[gemma-orpo] Peak layer: (41,)
+[gemma-orpo] Top 5 layers: ([41, 40, 38, 36, 39],)
+[HF] Pushing incremental results...
+Processing Files (4 / 4)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.48MB / 2.48MB,  155kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB,  155kB/s  
+  ...1/gemma-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  ...emma-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  .../gemma-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  .../gemma-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+[HF] Done.
+
+[CROSS-VARIANT] GEMMA pairwise cosine similarities (4 variants)...
+
+Layer | Gemma base model vs Gemma Safety SFT | Gemma base model vs Gemma Safety Ra-SFT | Gemma base model vs Gemma Safety ORPO | Gemma Safety SFT vs Gemma Safety Ra-SFT | Gemma Safety SFT vs Gemma Safety ORPO | Gemma Safety Ra-SFT vs Gemma Safety ORPO
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  00  |     0.0066 |    -0.0023 |     0.0021 |     0.9977 |     0.9982 |     0.9950
+  04  |     0.0797 |     0.0851 |     0.0783 |     0.9709 |     0.9632 |     0.9382
+  08  |     0.0592 |     0.0478 |     0.0489 |     0.7398 |     0.7530 |     0.7449
+  12  |     0.0478 |     0.0045 |     0.0800 |     0.4977 |     0.6960 |     0.4744
+  16  |     0.2192 |     0.0971 |     0.2230 |     0.4758 |     0.6588 |     0.4942
+  20  |     0.2798 |     0.1725 |     0.3279 |     0.6185 |     0.7639 |     0.6514
+  24  |     0.1449 |     0.0678 |     0.1488 |     0.5061 |     0.7228 |     0.6105
+  28  |     0.1130 |     0.0498 |     0.0843 |     0.3745 |     0.7214 |     0.4466
+  32  |     0.1401 |    -0.0056 |     0.0462 |     0.3295 |     0.7041 |     0.3652
+  36  |     0.1545 |    -0.0348 |     0.0391 |     0.2521 |     0.7013 |     0.3162
+  40  |     0.1805 |     0.0344 |     0.0916 |     0.2205 |     0.6748 |     0.2473
+[PLOT] Saved → results/phase1/cosine_heatmap_gemma.png
+[PLOT] Saved → results/phase1/cosine_similarity_profiles_gemma.png
+[PLOT] Saved → results/phase1/stability_gemma.png
+
+[EARLY DIAG] Running early layer divergence check...
+[PLOT] Saved → results/phase1/magnitude_profile_norm_gemma.png
+[PLOT] Saved → results/phase1/magnitude_profile_raw_gemma.png
+[CROSSOVER] gemma gemma-sft overtakes base at layer 25
+[CROSSOVER] gemma gemma-ra-sft overtakes base at layer None
+[CROSSOVER] gemma gemma-orpo overtakes base at layer 23
+
+[SHUTDOWN] Reason: Phase 1 complete
+[HF] Pushing final results...
+Processing Files (9 / 9)      : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3.24MB / 3.24MB,  252kB/s  
+New Data Upload               : 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  409kB /  409kB,  136kB/s  
+  ...emma-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  .../gemma-base/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  ...1/gemma-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  .../gemma-orpo/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  620kB /  620kB            
+  .../cosine_heatmap_gemma.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  126kB /  126kB            
+  ...larity_profiles_gemma.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  221kB /  221kB            
+  ...de_profile_norm_gemma.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  146kB /  146kB            
+  ...ude_profile_raw_gemma.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  136kB /  136kB            
+  ...hase1/stability_gemma.png: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  126kB /  126kB            
+[HF] Done.

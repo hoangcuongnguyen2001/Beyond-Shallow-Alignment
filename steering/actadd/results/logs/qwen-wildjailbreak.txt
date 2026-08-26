@@ -1,0 +1,260 @@
+python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 0   --wildjailbreak_path wildjailbreak_250.jsonl
+
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-sft   --model_name qwen3-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-sft_layer31_vector.pt   --target_layers 31 33 30 32 34   --alpha 0   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-sft
+Loading target model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 192.04it/s]
+Loaded steering vector from qwen3-sft_layer31_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [14:55<00:00, 14.21s/it]
+Saved generation cache → results/wildjailbreak/qwen3-sft_alpha0p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:30<00:00,  9.58it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:43<00:00,  1.65s/it]
+
+ASR: 0.3120 (78/250)
+Saved judged results → results/wildjailbreak/qwen3-sft_alpha0p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-sft   --model_name qwen3-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-sft_layer31_vector.pt   --target_layers 31 33 30 32 34   --alpha 5   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-sft
+Loading target model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 195.29it/s]
+Loaded steering vector from qwen3-sft_layer31_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [15:26<00:00, 14.70s/it]
+Saved generation cache → results/wildjailbreak/qwen3-sft_alpha5p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 139.51it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:46<00:00,  1.69s/it]
+
+ASR: 0.3280 (82/250)
+Saved judged results → results/wildjailbreak/qwen3-sft_alpha5p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-sft   --model_name qwen3-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-sft_layer31_vector.pt   --target_layers 31 33 30 32 34   --alpha 10   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-sft
+Loading target model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 194.80it/s]
+Loaded steering vector from qwen3-sft_layer31_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [15:18<00:00, 14.58s/it]
+Saved generation cache → results/wildjailbreak/qwen3-sft_alpha10p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 139.57it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:45<00:00,  1.68s/it]
+
+ASR: 0.2960 (74/250)
+Saved judged results → results/wildjailbreak/qwen3-sft_alpha10p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-sft   --model_name qwen3-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-sft_layer31_vector.pt   --target_layers 31 33 30 32 34   --alpha 15   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-sft
+Loading target model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 193.84it/s]
+Loaded steering vector from qwen3-sft_layer31_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [14:15<00:00, 13.58s/it]
+Saved generation cache → results/wildjailbreak/qwen3-sft_alpha15p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 140.68it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:38<00:00,  1.57s/it]
+
+ASR: 0.2600 (65/250)
+Saved judged results → results/wildjailbreak/qwen3-sft_alpha15p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-sft   --model_name qwen3-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-sft_layer31_vector.pt   --target_layers 31 33 30 32 34   --alpha 20   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-sft
+Loading target model: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 194.96it/s]
+Loaded steering vector from qwen3-sft_layer31_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [13:28<00:00, 12.83s/it]
+Saved generation cache → results/wildjailbreak/qwen3-sft_alpha20p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 140.46it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:29<00:00,  1.42s/it]
+
+ASR: 0.2040 (51/250)
+Saved judged results → results/wildjailbreak/qwen3-sft_alpha20p0_judged.json
+
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-ra-sft_layer26_vector.pt   --target_layers 31 24 25 26 27   --alpha 0   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-ra-sft
+Loading target model: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 199.19it/s]
+Loaded steering vector from qwen3-ra-sft_layer26_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [17:30<00:00, 16.67s/it]
+Saved generation cache → results/wildjailbreak/qwen3-ra-sft_alpha0p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 141.60it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:22<00:00,  1.31s/it]
+
+ASR: 0.3560 (89/250)
+Saved judged results → results/wildjailbreak/qwen3-ra-sft_alpha0p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-ra-sft_layer26_vector.pt   --target_layers 31 24 25 26 27   --alpha 5   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-ra-sft
+Loading target model: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:01<00:00, 201.94it/s]
+Loaded steering vector from qwen3-ra-sft_layer26_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:27<00:00, 15.68s/it]
+Saved generation cache → results/wildjailbreak/qwen3-ra-sft_alpha5p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 140.69it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:28<00:00,  1.40s/it]
+
+ASR: 0.2600 (65/250)
+Saved judged results → results/wildjailbreak/qwen3-ra-sft_alpha5p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-ra-sft_layer26_vector.pt   --target_layers 31 24 25 26 27   --alpha 10   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-ra-sft
+Loading target model: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:01<00:00, 200.97it/s]
+Loaded steering vector from qwen3-ra-sft_layer26_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [14:38<00:00, 13.95s/it]
+Saved generation cache → results/wildjailbreak/qwen3-ra-sft_alpha10p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 141.04it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:10<00:00,  1.11s/it]
+
+ASR: 0.2400 (60/250)
+Saved judged results → results/wildjailbreak/qwen3-ra-sft_alpha10p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-ra-sft_layer26_vector.pt   --target_layers 31 24 25 26 27   --alpha 15   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-ra-sft
+Loading target model: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:01<00:00, 201.10it/s]
+Loaded steering vector from qwen3-ra-sft_layer26_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [14:40<00:00, 13.97s/it]
+Saved generation cache → results/wildjailbreak/qwen3-ra-sft_alpha15p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 140.85it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:13<00:00,  1.17s/it]
+
+ASR: 0.1840 (46/250)
+Saved judged results → results/wildjailbreak/qwen3-ra-sft_alpha15p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-ra-sft_layer26_vector.pt   --target_layers 31 24 25 26 27   --alpha 20   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-ra-sft
+Loading target model: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:01<00:00, 201.36it/s]
+Loaded steering vector from qwen3-ra-sft_layer26_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [14:07<00:00, 13.45s/it]
+Saved generation cache → results/wildjailbreak/qwen3-ra-sft_alpha20p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 138.80it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:00<00:00,  1.04it/s]
+
+ASR: 0.2040 (51/250)
+Saved judged results → results/wildjailbreak/qwen3-ra-sft_alpha20p0_judged.json
+
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 0   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-orpo
+Loading target model: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 180.27it/s]
+Loaded steering vector from qwen3-orpo_layer32_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:33<00:00, 15.77s/it]
+Saved generation cache → results/wildjailbreak/qwen3-orpo_alpha0p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 137.35it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:48<00:00,  1.73s/it]
+
+ASR: 0.1880 (47/250)
+Saved judged results → results/wildjailbreak/qwen3-orpo_alpha0p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 5   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-orpo
+Loading target model: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 174.77it/s]
+Loaded steering vector from qwen3-orpo_layer32_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:39<00:00, 15.87s/it]
+Saved generation cache → results/wildjailbreak/qwen3-orpo_alpha5p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 115.15it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:42<00:00,  1.63s/it]
+
+ASR: 0.1680 (42/250)
+Saved judged results → results/wildjailbreak/qwen3-orpo_alpha5p0_judged.json
+
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 10   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-orpo
+Loading target model: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 173.91it/s]
+Loaded steering vector from qwen3-orpo_layer32_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:16<00:00, 15.50s/it]
+Saved generation cache → results/wildjailbreak/qwen3-orpo_alpha10p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 127.24it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:34<00:00,  1.50s/it]
+
+ASR: 0.1360 (34/250)
+Saved judged results → results/wildjailbreak/qwen3-orpo_alpha10p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 15   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-orpo
+Loading target model: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 184.34it/s]
+Loaded steering vector from qwen3-orpo_layer32_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:50<00:00, 16.03s/it]
+Saved generation cache → results/wildjailbreak/qwen3-orpo_alpha15p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 140.85it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:40<00:00,  1.59s/it]
+
+ASR: 0.1200 (30/250)
+Saved judged results → results/wildjailbreak/qwen3-orpo_alpha15p0_judged.json
+(main) root@C.45965484:/workspace$ python wildjailbreak_actadd.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo --judge_path models/llama-guard  --judge_device_map auto --vector_path qwen3-orpo_layer32_vector.pt   --target_layers 32 35 33 34 31   --alpha 20   --wildjailbreak_path wildjailbreak_250.jsonl
+Loaded 250 WildJailbreak prompts from wildjailbreak_250.jsonl
+Loading target tokenizer: models/qwen3-orpo
+Loading target model: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 184.64it/s]
+Loaded steering vector from qwen3-orpo_layer32_vector.pt
+Generating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [16:35<00:00, 15.80s/it]
+Saved generation cache → results/wildjailbreak/qwen3-orpo_alpha20p0_generations.json
+Loading judge tokenizer: models/llama-guard
+Loading judge model: models/llama-guard
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 291/291 [00:02<00:00, 141.56it/s]
+Judging:   0%|                                                                                                                                                | 0/63 [00:00<?, ?it/s][transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Judging: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 63/63 [01:40<00:00,  1.60s/it]
+
+ASR: 0.0840 (21/250)
+Saved judged results → results/wildjailbreak/qwen3-orpo_alpha20p0_judged.json

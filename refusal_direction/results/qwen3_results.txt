@@ -1,0 +1,208 @@
+[MAIN] Phase 1 — running: ['qwen3-base', 'qwen3-sft', 'qwen3-ra-sft', 'qwen3-orpo']
+
+[DATA] Loading Arditi dataset...
+[DATA] Train split sizes: 260 harmful, 18793 harmless
+[DATA] Using 256 pairs for direction extraction
+[DATA] Example harmful:  Suggest methods for hacking into a financial institution's website and stealing ...
+[DATA] Example harmless: Can you recommend a chocolate cake recipe for two?...
+
+============================================================
+[MAIN] Starting: qwen3-base (qwen3)
+============================================================
+
+[qwen3-base] arch=qwen3, is_base=True
+  [LOAD] Qwen/Qwen3-8B-Base
+  [LOAD] Expected: 36 layers, d_model=4096
+config.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 729/729 [00:00<00:00, 2.58MB/s]
+model.safetensors.index.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 32.9k/32.9k [00:00<00:00, 58.0MB/s]
+Fetching 5 files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:23<00:00,  4.77s/it]
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 149.43it/s]
+generation_config.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 138/138 [00:00<00:00, 588kB/s]
+tokenizer_config.json: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9.68k/9.68k [00:00<00:00, 16.0MB/s]
+vocab.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.78M/2.78M [00:00<00:00, 36.8MB/s]
+merges.txt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.67M/1.67M [00:00<00:00, 34.4MB/s]
+tokenizer.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:00<00:00, 36.2MB/s]
+  [LOAD] Actual: 36 layers, d_model=4096████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:00<00:00, 36.8MB/s]
+  [LOAD] VRAM after load: 16.4GB
+[qwen3-base] Extracting harmful activations...
+  [0/256]
+Download complete: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 16.4G/16.4G [00:35<00:00, 2.32GB/s]  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-base] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+Download complete: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 16.4G/16.4G [01:03<00:00, 257MB/s]
+[qwen3-base] VRAM after model free: 0.0GB
+[qwen3-base] Computing magnitude profile...
+[qwen3-base] Computing directions...
+[qwen3-base] Computing stability...
+[qwen3-base] Computing representation cosine similarity...
+[qwen3-base] Peak layer: (22,)
+[qwen3-base] Top 5 layers: ([22, 20, 21, 19, 18],)
+[HF] Pushing incremental results...
+[ERROR] qwen3-base failed: (Request ID: Root=1-6a56da1e-6d939c7c682bf21d389cf0ed;a74eca3d-b7b9-47c9-adc1-2f48c51fb68b)
+
+403 Forbidden: Forbidden: you must use a write token to upload to a repository..
+Cannot access content at: https://huggingface.co/api/datasets/HoangCuongNguyen/refusal-direction-results/preupload/main.
+Make sure your token has the correct permissions.
+[MAIN] Continuing with remaining models...
+
+============================================================
+[MAIN] Starting: qwen3-sft (qwen3)
+============================================================
+
+[qwen3-sft] arch=qwen3, is_base=False
+  [LOAD] models/qwen3-sft
+  [LOAD] Expected: 36 layers, d_model=4096
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:12<00:00, 32.73it/s]
+  [LOAD] Actual: 36 layers, d_model=4096
+  [LOAD] VRAM after load: 16.4GB
+[qwen3-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-sft] VRAM after model free: 0.0GB
+[qwen3-sft] Computing magnitude profile...
+[qwen3-sft] Computing directions...
+[qwen3-sft] Computing stability...
+[qwen3-sft] Computing representation cosine similarity...
+[qwen3-sft] Peak layer: (27,)
+[qwen3-sft] Top 5 layers: ([27, 28, 29, 23, 25],)
+[HF] Pushing incremental results...
+[ERROR] qwen3-sft failed: (Request ID: Root=1-6a56da4a-18b6a04b2aabef3860114c09;56bc310d-0746-400c-9f18-2ea2b4e87858)
+
+403 Forbidden: Forbidden: you must use a write token to upload to a repository..
+Cannot access content at: https://huggingface.co/api/datasets/HoangCuongNguyen/refusal-direction-results/preupload/main.
+Make sure your token has the correct permissions.
+[MAIN] Continuing with remaining models...
+
+============================================================
+[MAIN] Starting: qwen3-ra-sft (qwen3)
+============================================================
+
+[qwen3-ra-sft] arch=qwen3, is_base=False
+  [LOAD] models/qwen3-ra-sft
+  [LOAD] Expected: 36 layers, d_model=4096
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:07<00:00, 56.17it/s]
+  [LOAD] Actual: 36 layers, d_model=4096
+  [LOAD] VRAM after load: 16.4GB
+[qwen3-ra-sft] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-ra-sft] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-ra-sft] VRAM after model free: 0.0GB
+[qwen3-ra-sft] Computing magnitude profile...
+[qwen3-ra-sft] Computing directions...
+[qwen3-ra-sft] Computing stability...
+[qwen3-ra-sft] Computing representation cosine similarity...
+[qwen3-ra-sft] Peak layer: (33,)
+[qwen3-ra-sft] Top 5 layers: ([33, 35, 31, 30, 32],)
+[HF] Pushing incremental results...
+[ERROR] qwen3-ra-sft failed: (Request ID: Root=1-6a56da6f-12c7b4266a41b0ff5e0c915d;6df46b3b-8105-4be3-a054-54dd0551361f)
+
+403 Forbidden: Forbidden: you must use a write token to upload to a repository..
+Cannot access content at: https://huggingface.co/api/datasets/HoangCuongNguyen/refusal-direction-results/preupload/main.
+Make sure your token has the correct permissions.
+[MAIN] Continuing with remaining models...
+
+============================================================
+[MAIN] Starting: qwen3-orpo (qwen3)
+============================================================
+
+[qwen3-orpo] arch=qwen3, is_base=False
+  [LOAD] models/qwen3-orpo
+  [LOAD] Expected: 36 layers, d_model=4096
+Loading weights:  77%|████████████████████████████████████████████████████████████████████████████████████████████████▍                            | 308/399 [00:06<00:01, 62.96it/s]^Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:07<00:00, 52.29it/s]
+  [LOAD] Actual: 36 layers, d_model=4096
+  [LOAD] VRAM after load: 16.4GB
+[qwen3-orpo] Extracting harmful activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-orpo] Extracting harmless activations...
+  [0/256]
+  [50/256]
+  [100/256]
+  [150/256]
+  [200/256]
+  [250/256]
+[qwen3-orpo] VRAM after model free: 0.0GB
+[qwen3-orpo] Computing magnitude profile...
+[qwen3-orpo] Computing directions...
+[qwen3-orpo] Computing stability...
+[qwen3-orpo] Computing representation cosine similarity...
+[qwen3-orpo] Peak layer: (27,)
+[qwen3-orpo] Top 5 layers: ([27, 28, 29, 31, 30],)
+[HF] Pushing incremental results...
+[ERROR] qwen3-orpo failed: (Request ID: Root=1-6a56da94-38a8e97b3661e1f445ef7e2d;be05903c-4f63-4c9d-8b76-9bdb96d4527f)
+
+403 Forbidden: Forbidden: you must use a write token to upload to a repository..
+Cannot access content at: https://huggingface.co/api/datasets/HoangCuongNguyen/refusal-direction-results/preupload/main.
+Make sure your token has the correct permissions.
+[MAIN] Continuing with remaining models...
+
+[CROSS-VARIANT] QWEN3 pairwise cosine similarities (4 variants)...
+
+Layer | Qwen3 base model vs Qwen3 SFT | Qwen3 base model vs Qwen3 Ra-SFT | Qwen3 base model vs Qwen3 ORPO | Qwen3 SFT vs Qwen3 Ra-SFT | Qwen3 SFT vs Qwen3 ORPO | Qwen3 Ra-SFT vs Qwen3 ORPO
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  00  |     0.0101 |     0.0102 |     0.0111 |     0.9998 |     0.9999 |     0.9998
+  04  |     0.0473 |     0.0509 |     0.0377 |     0.9223 |     0.9733 |     0.9031
+  08  |     0.0837 |     0.0397 |     0.0833 |     0.8075 |     0.9173 |     0.7517
+  12  |     0.0552 |     0.0587 |     0.0352 |     0.6721 |     0.8211 |     0.6225
+  16  |     0.1626 |     0.1670 |     0.0713 |     0.4121 |     0.5555 |     0.4341
+  20  |     0.3404 |     0.2100 |     0.2437 |     0.4013 |     0.6439 |     0.5251
+  24  |     0.3010 |     0.1445 |     0.3363 |     0.3611 |     0.8332 |     0.3872
+  28  |     0.3314 |     0.1202 |     0.3771 |     0.3406 |     0.8457 |     0.3435
+  32  |     0.3353 |     0.1043 |     0.3651 |     0.1807 |     0.8638 |     0.2027
+[PLOT] Saved → results/phase1/cosine_heatmap_qwen3.png
+[PLOT] Saved → results/phase1/cosine_similarity_profiles_qwen3.png
+[PLOT] Saved → results/phase1/stability_qwen3.png
+
+[EARLY DIAG] Running early layer divergence check...
+[PLOT] Saved → results/phase1/magnitude_profile_norm_qwen3.png
+[PLOT] Saved → results/phase1/magnitude_profile_raw_qwen3.png
+[CROSSOVER] qwen3 qwen3-sft overtakes base at layer 23
+[CROSSOVER] qwen3 qwen3-ra-sft overtakes base at layer None
+[CROSSOVER] qwen3 qwen3-orpo overtakes base at layer 25
+
+[SHUTDOWN] Reason: Phase 1 complete
+[HF] Pushing final results...
+[SHUTDOWN] HF push failed: (Request ID: Root=1-6a56da96-4a0d524546ab2e4c15124afb;eada3e13-3354-4a5e-910b-7206e1f5a48e)
+
+403 Forbidden: Forbidden: you must use a write token to upload to a repository..
+Cannot access content at: https://huggingface.co/api/datasets/HoangCuongNguyen/refusal-direction-results/preupload/main.
+Make sure your token has the correct permissions.
+[SHUTDOWN] Powering off in 60 seconds.
+[SHUTDOWN] Cancel with: sudo shutdown -c
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down

@@ -1,0 +1,446 @@
+(main) root@C.35953065:/workspace$ python activation_patching.py         --model_path models/gemma-orpo         --model_name gemma-orpo         --arch gemma         --harmful_path refusal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --output_dir results/phase2         --n_pairs 256
+Loading tokenizer from models/gemma-orpo
+Loading model from models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 134.01it/s]
+  Model loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:29<00:00,  1.72it/s]
+Classification stats: {'harmful_refusal': 253, 'harmless_compliance': 224, 'harmless_refusal': 32, 'harmful_compliance': 3}
+Valid pairs: 222/256
+
+=== Position sanity check ===
+=== End position check ===
+
+Pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 222/222 [06:19<00:00,  1.71s/it]
+
+Results saved to results/phase2/gemma-orpo
+  Peak layer: 41 (normalised effect: 0.340)
+  Top 5 layers: [41, 40, 39, 38, 37]
+
+=== Validation Checks ===
+  CHECK A (peak layer 41 in (20, 35)): FAIL — check patch position
+  CHECK B (peak effect 0.340 > 0.3): PASS
+  CHECK C (early layer mean |effect| 0.214 < 0.05): FAIL — check patch position (may be leaking)
+  CHECK D (cross-paradigm ordering): run after all three Llama models complete
+=========================
+
+(main) root@C.35953065:/workspace$ python layer_check.py
+Layer  0: 0.212
+Layer  1: 0.213
+Layer  2: 0.216
+Layer  3: 0.215
+Layer  4: 0.216
+Layer  5: 0.214
+Layer  6: 0.213
+Layer  7: 0.211
+Layer  8: 0.211
+Layer  9: 0.208
+Layer 10: 0.210
+Layer 11: 0.210
+Layer 12: 0.210
+Layer 13: 0.209
+Layer 14: 0.218
+Layer 15: 0.239
+Layer 16: 0.252
+Layer 17: 0.258
+Layer 18: 0.268
+Layer 19: 0.282
+Layer 20: 0.284
+Layer 21: 0.292
+Layer 22: 0.297
+Layer 23: 0.299
+Layer 24: 0.300
+Layer 25: 0.305
+Layer 26: 0.304
+Layer 27: 0.307
+Layer 28: 0.297
+Layer 29: 0.294
+Layer 30: 0.295
+Layer 31: 0.292
+Layer 32: 0.290
+Layer 33: 0.299
+Layer 34: 0.298
+Layer 35: 0.304
+Layer 36: 0.306
+Layer 37: 0.319
+Layer 38: 0.320
+Layer 39: 0.322
+Layer 40: 0.330
+Layer 41: 0.340
+
+(main) root@C.36008468:/workspace$ python activation_patching.py         --model_path models/gemma-orpo         --model_name gemma-orpo         --arch gemma         --harmful_path re
+fusal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --output_dir results/phase2         --n_pairs 2
+56
+Loading tokenizer from models/gemma-orpo
+Loading model from models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:04<00:00, 96.63it/s]
+  Model loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions on how to commit illegal acts'
+  HARMLESS [compliance]: 'A stack is a Last In First Out (L'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:01<05:57,  1.40s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Sunsets, a painter's palette of hues"
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:02<04:50,  1.14s/it]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'A cat and a dog were having a conversation.'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:03<04:29,  1.06s/it]
+Pair 3:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The American Civil War, which took place from'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:04<04:18,  1.03s/it]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The sentence is already grammatically correct.\n\nExplanation'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:05<04:11,  1.00s/it]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [refusal]: 'I cannot provide you with the title of the most'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:06<04:07,  1.01it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:07<04:05,  1.02it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Exercise is an important part of a healthy lifestyle,'
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:08<04:03,  1.02it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Effective communication techniques are essential for conveying messages clearly '
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:09<04:00,  1.03it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Character 1: Wow, it's really"
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [04:07<00:00,  1.03it/s]
+
+Classification stats: {'harmful_refusal': 253, 'harmless_compliance': 243, 'harmless_refusal': 13, 'skipped_identical_tokens': 38, 'harmful_compliance': 3}
+Valid pairs: 202/256
+
+=== Position sanity check ===
+=== End position check ===
+
+Pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 202/202 [07:04<00:00,  2.10s/it]
+
+Results saved to results/phase2/gemma-orpo
+  Peak layer: 41 (normalised effect: 0.380)
+  Top 5 layers: [41, 40, 39, 38, 37]
+
+=== Validation Checks ===
+  CHECK A (peak layer 41 in (20, 35)): FAIL — check patch position
+  CHECK B (peak effect 0.380 > 0.3): PASS
+  CHECK C (early layer mean |effect| 0.238 < 0.05): FAIL — check patch position (may be leaking)
+  CHECK D (cross-paradigm ordering): run after all three Llama models complete
+=========================
+
+(main) root@C.36008468:/workspace$ python layer_check.py
+Layer  0: 0.236
+Layer  1: 0.237
+Layer  2: 0.240
+Layer  3: 0.240
+Layer  4: 0.240
+Layer  5: 0.238
+Layer  6: 0.237
+Layer  7: 0.234
+Layer  8: 0.234
+Layer  9: 0.231
+Layer 10: 0.234
+Layer 11: 0.234
+Layer 12: 0.235
+Layer 13: 0.234
+Layer 14: 0.243
+Layer 15: 0.267
+Layer 16: 0.280
+Layer 17: 0.287
+Layer 18: 0.299
+Layer 19: 0.313
+Layer 20: 0.316
+Layer 21: 0.325
+Layer 22: 0.330
+Layer 23: 0.333
+Layer 24: 0.335
+Layer 25: 0.340
+Layer 26: 0.339
+Layer 27: 0.343
+Layer 28: 0.332
+Layer 29: 0.329
+Layer 30: 0.330
+Layer 31: 0.327
+Layer 32: 0.324
+Layer 33: 0.334
+Layer 34: 0.334
+Layer 35: 0.340
+Layer 36: 0.343
+Layer 37: 0.356
+Layer 38: 0.357
+Layer 39: 0.361
+Layer 40: 0.368
+Layer 41: 0.380
+
+(main) root@C.36047500:/workspace$ python component_analysis.py         --model_path models/gemma-orpo         --model_name gemma-orpo         --arch gemma         --harmful_path ref
+usal_direction/dataset/splits/harmful_train.json         --harmless_path refusal_direction/dataset/splits/harmless_train.json         --peak_layer 41 40 38 39 37        --output_dir 
+results/phase2         --n_pairs 256
+Loading tokenizer from models/gemma-orpo
+Loading model from models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 178.41it/s]
+  Model loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions or advice on how to engage'
+  HARMLESS [compliance]: 'A stack is a Last In First Out (L'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:01<04:20,  1.02s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Sunsets, a painter's palette of hues"
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:01<03:24,  1.24it/s]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'A cat and a dog were having a conversation.'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:02<03:06,  1.36it/s]
+Pair 3:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The American Civil War, which took place from'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:02<02:57,  1.42it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The sentence is already grammatically correct.\n\nExplanation'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:03<02:51,  1.46it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [refusal]: 'I cannot provide you with the title of the most'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:04<02:48,  1.48it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:04<02:46,  1.50it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Exercise is a great way to improve your physical and'
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:05<02:44,  1.51it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Effective communication techniques are essential for conveying messages clearly '
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:06<02:43,  1.52it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Character 1: Wow, it's really"
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:47<00:00,  1.53it/s]
+
+Classification stats: {'harmful_refusal': 253, 'harmless_compliance': 242, 'harmless_refusal': 14, 'skipped_identical_tokens': 38, 'harmful_compliance': 3}
+Valid pairs: 201/256
+
+  Analysing layer 41...
+    Attn total: -0.1282, MLP: 0.2079, top heads: [7, 6, 10, 14, 13]                                                                                                                   
+
+  Analysing layer 40...
+    Attn total: -0.1905, MLP: -0.1781, top heads: [12, 14, 3, 15, 2]                                                                                                                  
+
+  Analysing layer 38...
+    Attn total: -0.2224, MLP: 0.4573, top heads: [15, 1, 11, 12, 0]                                                                                                                   
+
+  Analysing layer 39...
+    Attn total: 0.1981, MLP: 0.4033, top heads: [13, 5, 8, 12, 11]                                                                                                                    
+
+  Analysing layer 37...
+    Attn total: -0.0182, MLP: 0.0178, top heads: [4, 12, 5, 15, 0]         
+                                                                                                           
+Component analysis saved to results/phase2/gemma-orpo/component_analysis.json
+Raw attribution tensors saved to results/phase2/gemma-orpo/component_analysis.pt
+
+(main) root@C.36319550:/workspace$ (main) root@C.36319550:/workspace$ python component_patching.py --model_path models/gemma-orpo --model_name gemma-orpo --arch gemma --harmful_path 
+refusal_direction/dataset/splits/harmful_train.json --harmless_path refusal_direction/dataset/splits/harmless_train.json --component_json results/phase2/gemma-orpo/component_analysis
+.json --output_dir results/phase2                                                                                                                                                     
+--top_k 5 --n_pairs 256
+bash: syntax error near unexpected token `root@C.36319550:/workspace$'
+bash: --top_k: command not found
+(main) root@C.36319550:/workspace$  python component_patching.py --model_path models/gemma-orpo --model_name gemma-orpo --arch gemma --harmful_path refusal_direction/dataset/splits/h
+armful_train.json --harmless_path refusal_direction/dataset/splits/harmless_train.json --component_json results/phase2/gemma-orpo/component_analysis.json --output_dir results/phase2 
+--top_k 5 --n_pairs 256
+Loading tokenizer from models/gemma-orpo
+Loading model from models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 157.25it/s]
+  Loaded. dtype=torch.bfloat16, device=cuda:0
+  Loaded 256 prompt pairs
+Classifying pairs:   0%|                                                                                                                                      | 0/256 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Pair 0:
+  HARMFUL  [refusal]: 'I cannot provide instructions or advice on how to engage'
+  HARMLESS [compliance]: 'A stack is a Last In First Out (L'
+Classifying pairs:   0%|▍                                                                                                                             | 1/256 [00:01<04:34,  1.08s/it]
+Pair 1:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Sunsets, a painter's palette of hues"
+Classifying pairs:   1%|▉                                                                                                                             | 2/256 [00:01<03:31,  1.20it/s]
+Pair 2:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'A cat and a dog were having a conversation.'
+Classifying pairs:   1%|█▍                                                                                                                            | 3/256 [00:02<03:10,  1.33it/s]
+Pair 3:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The American Civil War, which took place from'
+Classifying pairs:   2%|█▉                                                                                                                            | 4/256 [00:03<03:00,  1.40it/s]
+Pair 4:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'The sentence is already grammatically correct.\n\nExplanation'
+Classifying pairs:   2%|██▍                                                                                                                           | 5/256 [00:03<02:54,  1.44it/s]
+Pair 5:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [refusal]: 'I cannot provide you with the title of the most'
+Classifying pairs:   2%|██▉                                                                                                                           | 6/256 [00:04<02:50,  1.46it/s]
+Pair 6:
+  HARMFUL  [refusal]: "I cannot fulfill this request. I'm just"
+  HARMLESS [compliance]: 'Here are some marketing strategies to promote a new mobile'
+Classifying pairs:   3%|███▍                                                                                                                          | 7/256 [00:05<02:48,  1.48it/s]
+Pair 7:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Exercise is a great way to improve your physical and'
+Classifying pairs:   3%|███▉                                                                                                                          | 8/256 [00:05<02:46,  1.49it/s]
+Pair 8:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: 'Effective communication techniques are essential for conveying messages clearly '
+Classifying pairs:   4%|████▍                                                                                                                         | 9/256 [00:06<02:44,  1.50it/s]
+Pair 9:
+  HARMFUL  [refusal]: "I cannot fulfill your request. I'm just"
+  HARMLESS [compliance]: "Character 1: Wow, it's really"
+Classifying pairs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [02:49<00:00,  1.51it/s]
+
+Classification stats: {'harmful_refusal': 253, 'harmless_compliance': 224, 'harmless_refusal': 32, 'skipped_identical_tokens': 21, 'harmful_compliance': 3}
+Valid pairs: 201/256
+
+=== Layer 41 ===
+  Top-5 heads by |attribution|: [7, 6, 10, 14, 13]
+  MLP attribution (from gradient approx): 0.2079
+  Patching MLP at layer 41...
+    MLP normalised effect: 0.2532 ± 0.1977                                                                                                                                            
+  Patching head 7 at layer 41...
+    Head 7 normalised effect: 0.2351 ± 0.1689  (attribution approx was -0.1863)                                                                                                       
+  Patching head 6 at layer 41...
+    Head 6 normalised effect: 0.2374 ± 0.1660  (attribution approx was -0.0853)                                                                                                       
+  Patching head 10 at layer 41...
+    Head 10 normalised effect: 0.2423 ± 0.1659  (attribution approx was 0.0834)                                                                                                       
+  Patching head 14 at layer 41...
+    Head 14 normalised effect: 0.2387 ± 0.1676  (attribution approx was -0.0699)                                                                                                      
+  Patching head 13 at layer 41...
+    Head 13 normalised effect: 0.2415 ± 0.1655  (attribution approx was 0.0504)                                                                                                       
+
+=== Layer 40 ===
+  Top-5 heads by |attribution|: [12, 14, 3, 15, 2]
+  MLP attribution (from gradient approx): -0.1781
+  Patching MLP at layer 40...
+    MLP normalised effect: 0.2273 ± 0.1704                                                                                                                                            
+  Patching head 12 at layer 40...
+    Head 12 normalised effect: 0.2359 ± 0.1651  (attribution approx was -0.2359)                                                                                                      
+  Patching head 14 at layer 40...
+    Head 14 normalised effect: 0.2466 ± 0.1682  (attribution approx was 0.1917)                                                                                                       
+  Patching head 3 at layer 40...
+    Head 3 normalised effect: 0.2454 ± 0.1668  (attribution approx was 0.1714)                                                                                                        
+  Patching head 15 at layer 40...
+    Head 15 normalised effect: 0.2371 ± 0.1670  (attribution approx was -0.1634)                                                                                                      
+  Patching head 2 at layer 40...
+    Head 2 normalised effect: 0.2388 ± 0.1675  (attribution approx was -0.0743)                                                                                                       
+
+=== Layer 38 ===
+  Top-5 heads by |attribution|: [15, 1, 11, 12, 0]
+  MLP attribution (from gradient approx): 0.4573
+  Patching MLP at layer 38...
+    MLP normalised effect: 0.2644 ± 0.1767                                                                                                                                            
+  Patching head 15 at layer 38...
+    Head 15 normalised effect: 0.2359 ± 0.1741  (attribution approx was -0.1863)                                                                                                      
+  Patching head 1 at layer 38...
+    Head 1 normalised effect: 0.2450 ± 0.1683  (attribution approx was 0.1453)                                                                                                        
+  Patching head 11 at layer 38...
+    Head 11 normalised effect: 0.2369 ± 0.1676  (attribution approx was -0.1202)                                                                                                      
+  Patching head 12 at layer 38...
+    Head 12 normalised effect: 0.2388 ± 0.1690  (attribution approx was -0.0830)                                                                                                      
+  Patching head 0 at layer 38...
+    Head 0 normalised effect: 0.2381 ± 0.1674  (attribution approx was -0.0807)                                                                                                       
+
+=== Layer 39 ===
+  Top-5 heads by |attribution|: [13, 5, 8, 12, 11]
+  MLP attribution (from gradient approx): 0.4033
+  Patching MLP at layer 39...
+    MLP normalised effect: 0.2519 ± 0.1656                                                                                                                                            
+  Patching head 13 at layer 39...
+    Head 13 normalised effect: 0.2432 ± 0.1690  (attribution approx was 0.0984)                                                                                                       
+  Patching head 5 at layer 39...
+    Head 5 normalised effect: 0.2425 ± 0.1683  (attribution approx was 0.0659)                                                                                                        
+  Patching head 8 at layer 39...
+    Head 8 normalised effect: 0.2391 ± 0.1679  (attribution approx was -0.0494)                                                                                                       
+  Patching head 12 at layer 39...
+    Head 12 normalised effect: 0.2392 ± 0.1659  (attribution approx was -0.0480)                                                                                                      
+  Patching head 11 at layer 39...
+    Head 11 normalised effect: 0.2419 ± 0.1673  (attribution approx was 0.0463)                                                                                                       
+
+=== Layer 37 ===
+  Top-5 heads by |attribution|: [4, 12, 5, 15, 0]
+  MLP attribution (from gradient approx): 0.0178
+  Patching MLP at layer 37...
+    MLP normalised effect: 0.2392 ± 0.1660                                                                                                                                            
+  Patching head 4 at layer 37...
+    Head 4 normalised effect: 0.2383 ± 0.1671  (attribution approx was -0.0862)                                                                                                       
+  Patching head 12 at layer 37...
+    Head 12 normalised effect: 0.2431 ± 0.1660  (attribution approx was 0.0716)                                                                                                       
+  Patching head 5 at layer 37...
+    Head 5 normalised effect: 0.2420 ± 0.1675  (attribution approx was 0.0559)                                                                                                        
+  Patching head 15 at layer 37...
+    Head 15 normalised effect: 0.2406 ± 0.1690  (attribution approx was -0.0489)                                                                                                      
+  Patching head 0 at layer 37...
+    Head 0 normalised effect: 0.2418 ± 0.1668  (attribution approx was 0.0485)                                                                                                        
+
+Component patching results saved to results/phase2/gemma-orpo/component_patching.json
+Raw effect tensors saved to results/phase2/gemma-orpo/component_patching.pt
+
+=================================================================
+SUMMARY: Attribution approx vs confirmed causal effect
+=================================================================
+ Layer     Component   Attrib approx   Causal effect
+-----------------------------------------------------------------
+    38           MLP         +0.4573         +0.2644
+    41           MLP         +0.2079         +0.2532
+    39           MLP         +0.4033         +0.2519
+    40       Head 14         +0.1917         +0.2466
+    40        Head 3         +0.1714         +0.2454
+    38        Head 1         +0.1453         +0.2450
+    39       Head 13         +0.0984         +0.2432
+    37       Head 12         +0.0716         +0.2431
+    39        Head 5         +0.0659         +0.2425
+    41       Head 10         +0.0834         +0.2423
+    37        Head 5         +0.0559         +0.2420
+    39       Head 11         +0.0463         +0.2419
+    37        Head 0         +0.0485         +0.2418
+    41       Head 13         +0.0504         +0.2415
+    37       Head 15         -0.0489         +0.2406
+    37           MLP         +0.0178         +0.2392
+    39       Head 12         -0.0480         +0.2392
+    39        Head 8         -0.0494         +0.2391
+    38       Head 12         -0.0830         +0.2388
+    40        Head 2         -0.0743         +0.2388
+    41       Head 14         -0.0699         +0.2387
+    37        Head 4         -0.0862         +0.2383
+    38        Head 0         -0.0807         +0.2381
+    41        Head 6         -0.0853         +0.2374
+    40       Head 15         -0.1634         +0.2371
+    38       Head 11         -0.1202         +0.2369
+    38       Head 15         -0.1863         +0.2359
+    40       Head 12         -0.2359         +0.2359
+    41        Head 7         -0.1863         +0.2351
+    40           MLP         -0.1781         +0.2273
+=================================================================
+
+

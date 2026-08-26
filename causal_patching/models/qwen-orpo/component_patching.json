@@ -1,0 +1,202 @@
+{
+  "32": {
+    "mlp": {
+      "mean_normalised_effect": 0.4771694193048369,
+      "std_normalised_effect": 0.7539263558287452,
+      "attribution_approx": 0.8559044599533081,
+      "n_pairs": 191
+    },
+    "attention_heads": {
+      "27": {
+        "mean_normalised_effect": 0.04781445418575177,
+        "std_normalised_effect": 0.17618423525797408,
+        "attribution_approx": 0.13938786089420319,
+        "n_pairs": 191
+      },
+      "31": {
+        "mean_normalised_effect": -0.014631389400539634,
+        "std_normalised_effect": 0.11686680409264702,
+        "attribution_approx": -0.08744809031486511,
+        "n_pairs": 191
+      },
+      "26": {
+        "mean_normalised_effect": 0.0330103072564055,
+        "std_normalised_effect": 0.13088564798438504,
+        "attribution_approx": 0.04679859057068825,
+        "n_pairs": 191
+      },
+      "16": {
+        "mean_normalised_effect": 0.017565749917125614,
+        "std_normalised_effect": 0.09508028092323478,
+        "attribution_approx": 0.04552377387881279,
+        "n_pairs": 191
+      },
+      "25": {
+        "mean_normalised_effect": -0.003860575110935441,
+        "std_normalised_effect": 0.09686062038409828,
+        "attribution_approx": -0.038316939026117325,
+        "n_pairs": 191
+      }
+    }
+  },
+  "35": {
+    "mlp": {
+      "mean_normalised_effect": 0.20262804535906637,
+      "std_normalised_effect": 0.6601525778378512,
+      "attribution_approx": 0.1439414918422699,
+      "n_pairs": 191
+    },
+    "attention_heads": {
+      "27": {
+        "mean_normalised_effect": 0.005627459336750127,
+        "std_normalised_effect": 0.3343131660335209,
+        "attribution_approx": 0.1730748564004898,
+        "n_pairs": 191
+      },
+      "24": {
+        "mean_normalised_effect": 0.023572160904630646,
+        "std_normalised_effect": 0.25721789957079816,
+        "attribution_approx": 0.16982941329479218,
+        "n_pairs": 191
+      },
+      "2": {
+        "mean_normalised_effect": 0.027523231215659215,
+        "std_normalised_effect": 0.08973991125082281,
+        "attribution_approx": 0.07991468161344528,
+        "n_pairs": 191
+      },
+      "18": {
+        "mean_normalised_effect": -0.01563345190860036,
+        "std_normalised_effect": 0.07078135655687263,
+        "attribution_approx": -0.042166825383901596,
+        "n_pairs": 191
+      },
+      "26": {
+        "mean_normalised_effect": 0.02185095107815068,
+        "std_normalised_effect": 0.11722858717793497,
+        "attribution_approx": 0.04142829403281212,
+        "n_pairs": 191
+      }
+    }
+  },
+  "33": {
+    "mlp": {
+      "mean_normalised_effect": 0.1661603274427278,
+      "std_normalised_effect": 0.7368169184321561,
+      "attribution_approx": -0.23149189352989197,
+      "n_pairs": 191
+    },
+    "attention_heads": {
+      "21": {
+        "mean_normalised_effect": -0.049098905455733324,
+        "std_normalised_effect": 0.2378192046003519,
+        "attribution_approx": -0.21419493854045868,
+        "n_pairs": 191
+      },
+      "7": {
+        "mean_normalised_effect": 0.06142305848683853,
+        "std_normalised_effect": 0.24283522561562654,
+        "attribution_approx": 0.1564931720495224,
+        "n_pairs": 191
+      },
+      "5": {
+        "mean_normalised_effect": -0.014717788525032553,
+        "std_normalised_effect": 0.1813477215071173,
+        "attribution_approx": -0.11829075217247009,
+        "n_pairs": 191
+      },
+      "30": {
+        "mean_normalised_effect": -0.040206852834256665,
+        "std_normalised_effect": 0.11142428992324177,
+        "attribution_approx": -0.11538158357143402,
+        "n_pairs": 191
+      },
+      "28": {
+        "mean_normalised_effect": 0.018961386133354824,
+        "std_normalised_effect": 0.14215665166142924,
+        "attribution_approx": 0.10194636136293411,
+        "n_pairs": 191
+      }
+    }
+  },
+  "34": {
+    "mlp": {
+      "mean_normalised_effect": 0.10176149850988087,
+      "std_normalised_effect": 0.8019322103385399,
+      "attribution_approx": -0.2289663851261139,
+      "n_pairs": 191
+    },
+    "attention_heads": {
+      "16": {
+        "mean_normalised_effect": -0.04388857797971987,
+        "std_normalised_effect": 0.19125068623292232,
+        "attribution_approx": -0.10997214913368225,
+        "n_pairs": 191
+      },
+      "29": {
+        "mean_normalised_effect": -0.00869022721228125,
+        "std_normalised_effect": 0.1632746082866009,
+        "attribution_approx": -0.06537891924381256,
+        "n_pairs": 191
+      },
+      "3": {
+        "mean_normalised_effect": 0.02392485450166703,
+        "std_normalised_effect": 0.1055127622134143,
+        "attribution_approx": 0.0633235052227974,
+        "n_pairs": 191
+      },
+      "7": {
+        "mean_normalised_effect": 0.004673347511831759,
+        "std_normalised_effect": 0.13604636915148857,
+        "attribution_approx": 0.0597388818860054,
+        "n_pairs": 191
+      },
+      "13": {
+        "mean_normalised_effect": 0.018376994281735216,
+        "std_normalised_effect": 0.08870465406625752,
+        "attribution_approx": 0.056141745299100876,
+        "n_pairs": 191
+      }
+    }
+  },
+  "31": {
+    "mlp": {
+      "mean_normalised_effect": 0.12686605128676315,
+      "std_normalised_effect": 0.6403715715760081,
+      "attribution_approx": 0.16067244112491608,
+      "n_pairs": 191
+    },
+    "attention_heads": {
+      "11": {
+        "mean_normalised_effect": 0.19046312868638346,
+        "std_normalised_effect": 0.48652314164408966,
+        "attribution_approx": 0.588543176651001,
+        "n_pairs": 191
+      },
+      "30": {
+        "mean_normalised_effect": 0.030034842643367362,
+        "std_normalised_effect": 0.17267687082784164,
+        "attribution_approx": 0.04439665004611015,
+        "n_pairs": 191
+      },
+      "26": {
+        "mean_normalised_effect": 0.009078825052812324,
+        "std_normalised_effect": 0.12350383051063112,
+        "attribution_approx": -0.040742695331573486,
+        "n_pairs": 191
+      },
+      "19": {
+        "mean_normalised_effect": 0.0076932387975073655,
+        "std_normalised_effect": 0.0806598568878292,
+        "attribution_approx": 0.039884053170681,
+        "n_pairs": 191
+      },
+      "16": {
+        "mean_normalised_effect": -0.014047036209645444,
+        "std_normalised_effect": 0.07668467835249927,
+        "attribution_approx": -0.03597784414887428,
+        "n_pairs": 191
+      }
+    }
+  }
+}

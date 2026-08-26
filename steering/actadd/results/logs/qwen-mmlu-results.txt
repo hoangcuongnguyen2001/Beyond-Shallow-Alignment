@@ -1,0 +1,146 @@
+(main) root@C.45131404:/workspace$ python actadd_vectors.py   --model_path models/qwen3-ra-sft   --model_name qwen3-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-ra-sft/directions.pt   --peak_layer 26   --target_layers 31 24 25 26 27   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-ra-sft
+Loading tokenizer: models/qwen3-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 199.07it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-ra-sft/directions.pt
+Saved steering vector → results/phase3/vectors/qwen3-ra-sft_layer26_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:34<00:00,  4.97s/it]
+MMLU Accuracy: 0.6450
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:22<00:00,  4.91s/it]
+MMLU Accuracy: 0.6250
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [15:53<00:00,  4.77s/it]
+MMLU Accuracy: 0.6450
+
+Running MMLU with α=15.0
+MMLU α=15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [15:58<00:00,  4.79s/it]
+MMLU Accuracy: 0.6100
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [16:17<00:00,  4.89s/it]
+MMLU Accuracy: 0.5900
+
+Saved final results → results/phase3/qwen3-ra-sft_mmlu_results.json
+
+python actadd_vectors.py   --model_path models/qwen3-sft   --model_name qwen3-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-sft/directions.pt   --peak_layer 31   --target_layers 31 33 30 32 34   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+
+(main) root@C.45131404:/workspace$ python actadd_vectors.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-orpo/directions.pt   --peak_layer 32   --target_layers 32 35 33 34 31   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-orpo
+Loading tokenizer: models/qwen3-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:01<00:00, 209.59it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-orpo/directions.pt
+Saved steering vector → results/phase3/vectors/qwen3-orpo_layer32_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [07:17<00:00,  2.19s/it]
+MMLU Accuracy: 0.5700
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [07:19<00:00,  2.20s/it]
+MMLU Accuracy: 0.5500
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [07:19<00:00,  2.20s/it]
+MMLU Accuracy: 0.5600
+
+Running MMLU with α=15.0
+MMLU α=15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [07:02<00:00,  2.11s/it]
+MMLU Accuracy: 0.5600
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [07:11<00:00,  2.16s/it]
+MMLU Accuracy: 0.5650
+
+Saved final results → results/phase3/qwen3-orpo_mmlu_results.json
+
+(main) root@C.45131404:/workspace$ 
+python actadd_vectors.py   --model_path models/qwen3-sft   --model_name qwen3-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-sft/directions.pt   --peak_layer 31   --target_layers 31 33 30 32 34   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-sft
+Loading tokenizer: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:06<00:00, 65.29it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-sft/directions.pt
+phase1/qwen3-sft/directions.pt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 605k/605k [00:01<00:00, 471kB/s]
+Saved steering vector → results/phase3/vectors/qwen3-sft_layer31_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [19:50<00:00,  5.95s/it]
+MMLU Accuracy: 0.5850
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [18:45<00:00,  5.63s/it]
+MMLU Accuracy: 0.5750
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [19:21<00:00,  5.81s/it]
+MMLU Accuracy: 0.5750
+
+Running MMLU with α=15.0
+MMLU α=15.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [19:33<00:00,  5.87s/it]
+MMLU Accuracy: 0.5750
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [19:50<00:00,  5.95s/it]
+MMLU Accuracy: 0.5900
+
+Saved final results → results/phase3/qwen3-sft_mmlu_results.json
+
+python actadd_vectors.py   --model_path models/qwen3-orpo   --model_name qwen3-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-orpo/directions.pt   --peak_layer 32   --target_layers 27 28 29 31 30   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+
+(main) root@C.46082884:/workspace$ python actadd_vectors.py   --model_path models/qwen3-sft   --model_name qwen3-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-sft/directions.pt   --peak_layer 31   --target_layers 27 28 29 23 25   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-sft
+Loading tokenizer: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:08<00:00, 48.71it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-sft/directions.pt
+phase1/qwen3-sft/directions.pt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 605k/605k [00:01<00:00, 502kB/s]
+Saved steering vector → results/phase3/vectors/qwen3-sft_layer27_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [23:38<00:00,  7.09s/it]
+MMLU Accuracy: 0.5900
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [23:05<00:00,  6.93s/it]
+MMLU Accuracy: 0.5800
+
+
+
+(main) root@C.46155738:/workspace$ python actadd_vectors.py   --model_path models/qwen3-sft   --model_name qwen3-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/qwen3-sft/directions.pt   --peak_layer 31   --target_layers 31 33 30 32 34   --mmlu_prompts mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/qwen3-sft
+Loading tokenizer: models/qwen3-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 399/399 [00:02<00:00, 139.83it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/qwen3-sft/directions.pt
+Saved steering vector → results/phase3/vectors/qwen3-sft_layer31_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [31:32<00:00,  9.46s/it]
+MMLU Accuracy: 0.5550
+
+Running MMLU with α=-5.0
+MMLU α=-5.0: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [32:27<00:00,  9.74s/it]
+MMLU Accuracy: 0.5500
+
+Running MMLU with α=-10.0
+MMLU α=-10.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [31:46<00:00,  9.53s/it]
+MMLU Accuracy: 0.5650
+
+Running MMLU with α=-15.0
+MMLU α=-15.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [32:54<00:00,  9.87s/it]
+MMLU Accuracy: 0.5650
+
+Running MMLU with α=-20.0
+MMLU α=-20.0: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [32:56<00:00,  9.88s/it]
+MMLU Accuracy: 0.5750
+
+Saved final results → results/phase3/qwen3-sft_mmlu_results.json
+
+

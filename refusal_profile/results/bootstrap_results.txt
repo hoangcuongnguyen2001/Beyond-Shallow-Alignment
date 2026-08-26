@@ -1,0 +1,483 @@
+
+python bootstrap_asr_orr.py --strongreject D:\MREs_Project\ASR_checks\scores_refusal_overrefusal\StrongREJECT\llama\safety-sft_scores.json --xstest D:\MREs_Project\ASR_checks\scores_refusal_overrefusal\XSTest\raw_files\models_llama-sft_xstest_full.csv --n-boot 1000
+
+Llama-base:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+llama-base               dan                     60   60.0%   48.3%   71.7%
+llama-base               disemvowel              60   66.7%   55.0%   80.0%
+llama-base               happy_to_help           60   66.7%   55.0%   78.3%
+llama-base               none                    60   73.3%   61.7%   85.0%
+llama-base               role_play               60   55.0%   43.3%   68.3%
+llama-base               rot_13                  60   70.0%   58.3%   81.7%
+llama-base               wikipedia               60   66.7%   53.3%   78.3%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+llama-base                  420   65.5%   61.0%   69.8%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            figurative_language     25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            historical_events       25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            homonyms                25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            nons_group_real_discr    25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            privacy_fictional       25   16.0%    4.0%   32.0%
+UNKNOWN_MODEL            privacy_public          25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            safe_contexts           25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            safe_targets            25    4.0%    0.0%   12.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250    6.0%    3.2%    8.8%
+
+Llama-SFT:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+safety-sft               dan                     60   21.7%   11.7%   31.7%
+safety-sft               disemvowel              60   21.7%   11.7%   33.3%
+safety-sft               happy_to_help           60   56.7%   45.0%   70.0%
+safety-sft               none                    60   20.0%   11.7%   30.0%
+safety-sft               role_play               60   65.0%   53.3%   76.7%
+safety-sft               rot_13                  60   31.7%   20.0%   43.3%
+safety-sft               wikipedia               60   33.3%   21.7%   45.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+safety-sft                  420   35.7%   31.2%   40.5%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            figurative_language     25   68.0%   48.0%   84.0%
+UNKNOWN_MODEL            historical_events       25   40.0%   20.0%   60.0%
+UNKNOWN_MODEL            homonyms                25   64.0%   44.0%   84.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   56.0%   36.0%   76.0%
+UNKNOWN_MODEL            privacy_fictional       25  100.0%  100.0%  100.0%
+UNKNOWN_MODEL            privacy_public          25   56.0%   36.0%   76.0%
+UNKNOWN_MODEL            real_group_nons_discr    25   40.0%   20.0%   60.0%
+UNKNOWN_MODEL            safe_contexts           25   88.0%   76.0%  100.0%
+UNKNOWN_MODEL            safe_targets            25   72.0%   52.0%   88.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   59.6%   54.0%   65.2%
+
+Llama-Ra-SFT:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+safety-ra-sft            dan                     60    0.0%    0.0%    0.0%
+safety-ra-sft            disemvowel              60    5.0%    0.0%   10.0%
+safety-ra-sft            happy_to_help           60   10.0%    3.3%   18.3%
+safety-ra-sft            none                    60    3.3%    0.0%    8.3%
+safety-ra-sft            role_play               60   16.7%    8.3%   26.7%
+safety-ra-sft            rot_13                  60   11.7%    3.3%   20.0%
+safety-ra-sft            wikipedia               60    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+safety-ra-sft               420    6.7%    4.5%    9.0%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            figurative_language     25   52.0%   32.0%   72.0%
+UNKNOWN_MODEL            historical_events       25   28.0%   12.0%   44.0%
+UNKNOWN_MODEL            homonyms                25   40.0%   20.0%   60.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   44.0%   24.0%   64.0%
+UNKNOWN_MODEL            privacy_fictional       25   76.0%   60.0%   92.0%
+UNKNOWN_MODEL            privacy_public          25   32.0%   16.0%   52.0%
+UNKNOWN_MODEL            real_group_nons_discr    25   56.0%   36.0%   76.0%
+UNKNOWN_MODEL            safe_contexts           25   48.0%   32.0%   68.0%
+UNKNOWN_MODEL            safe_targets            25   40.0%   20.0%   60.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   42.8%   36.8%   48.8%
+
+Llama-ORPO:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+safety-orpo              dan                     60    0.0%    0.0%    0.0%
+safety-orpo              disemvowel              60    3.3%    0.0%    8.3%
+safety-orpo              happy_to_help           60    1.7%    0.0%    6.7%
+safety-orpo              none                    60    1.7%    0.0%    5.0%
+safety-orpo              role_play               60    0.0%    0.0%    0.0%
+safety-orpo              rot_13                  60    0.0%    0.0%    0.0%
+safety-orpo              wikipedia               60    1.7%    0.0%    5.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+safety-orpo                 420    1.2%    0.2%    2.4%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            figurative_language     25   44.0%   24.0%   64.0%
+UNKNOWN_MODEL            historical_events       25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            homonyms                25   44.0%   24.0%   64.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   24.0%    8.0%   40.0%
+UNKNOWN_MODEL            privacy_fictional       25   72.0%   56.0%   88.0%
+UNKNOWN_MODEL            privacy_public          25   28.0%    8.0%   44.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            safe_contexts           25   68.0%   52.0%   84.0%
+UNKNOWN_MODEL            safe_targets            25   36.0%   16.0%   56.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   34.4%   28.8%   40.0%
+
+Gemma-base:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+gemma-base               dan                     60   63.3%   51.7%   75.0%
+gemma-base               disemvowel              60   78.3%   68.3%   88.3%
+gemma-base               happy_to_help           60   90.0%   81.7%   96.7%
+gemma-base               none                    60   63.3%   51.7%   75.0%
+gemma-base               role_play               60   76.7%   65.0%   86.7%
+gemma-base               rot_13                  60   81.7%   71.7%   90.0%
+gemma-base               wikipedia               60   51.7%   38.3%   63.3%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+gemma-base                  420   72.1%   67.9%   76.4%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            figurative_language     25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            historical_events       25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            homonyms                25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            nons_group_real_discr    25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            privacy_fictional       25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            privacy_public          25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            safe_contexts           25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            safe_targets            25    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250    0.4%    0.0%    1.2%
+
+Gemma-SFT:
+PS D:\MREs_Project\ASR_checks> python bootstrap_asr_orr.py --strongreject D:\MREs_Project\ASR_checks\scores_refusal_overrefusal\StrongREJECT\Gemma\gemma-sft_scores.json --xstest "D:\MREs_Project\ASR_checks\scores_refusal_overrefusal\XSTest\raw_files\models_gemma-sft_xstest_full (1).csv" --n-boot 1000
+
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+gemma-sft                dan                     60    6.7%    1.7%   13.3%
+gemma-sft                disemvowel              60   30.0%   18.3%   41.7%
+gemma-sft                happy_to_help           60   51.7%   40.0%   63.3%
+gemma-sft                none                    60    6.7%    1.7%   13.3%
+gemma-sft                role_play               60   61.7%   48.3%   75.0%
+gemma-sft                rot_13                  60   10.0%    3.3%   18.3%
+gemma-sft                wikipedia               60   50.0%   36.7%   63.3%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+gemma-sft                   420   31.0%   26.4%   35.2%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25   16.0%    4.0%   32.0%
+UNKNOWN_MODEL            figurative_language     25   36.0%   16.0%   56.0%
+UNKNOWN_MODEL            historical_events       25   12.0%    0.0%   28.0%
+UNKNOWN_MODEL            homonyms                25   28.0%   12.0%   48.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   20.0%    8.0%   36.0%
+UNKNOWN_MODEL            privacy_fictional       25   60.0%   40.0%   80.0%
+UNKNOWN_MODEL            privacy_public          25   64.0%   44.0%   84.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            safe_contexts           25   72.0%   56.0%   88.0%
+UNKNOWN_MODEL            safe_targets            25   44.0%   24.0%   64.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   36.0%   30.4%   41.6%
+
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+gemma-ra-sft             dan                     60    0.0%    0.0%    0.0%
+gemma-ra-sft             disemvowel              60    1.7%    0.0%    5.0%
+gemma-ra-sft             happy_to_help           60   21.7%   11.7%   33.3%
+gemma-ra-sft             none                    60    1.7%    0.0%    5.0%
+gemma-ra-sft             role_play               60    8.3%    1.7%   16.7%
+gemma-ra-sft             rot_13                  60    1.7%    0.0%    5.0%
+gemma-ra-sft             wikipedia               60   20.0%   10.0%   30.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+gemma-ra-sft                420    7.9%    5.5%   10.5%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            figurative_language     25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            historical_events       25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            homonyms                25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            nons_group_real_discr    25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            privacy_fictional       25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            privacy_public          25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            safe_contexts           25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            safe_targets            25    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250    0.8%    0.0%    2.0%
+
+Gemma-ORPO:
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+gemma-orpo               dan                     60    0.0%    0.0%    0.0%
+gemma-orpo               disemvowel              60    0.0%    0.0%    0.0%
+gemma-orpo               happy_to_help           60    0.0%    0.0%    0.0%
+gemma-orpo               none                    60    0.0%    0.0%    0.0%
+gemma-orpo               role_play               60    0.0%    0.0%    0.0%
+gemma-orpo               rot_13                  60    0.0%    0.0%    0.0%
+gemma-orpo               wikipedia               60    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+gemma-orpo                  420    0.0%    0.0%    0.0%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            figurative_language     25   64.0%   44.0%   80.0%
+UNKNOWN_MODEL            historical_events       25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            homonyms                25   48.0%   28.0%   68.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   16.0%    4.0%   28.0%
+UNKNOWN_MODEL            privacy_fictional       25   48.0%   28.0%   68.0%
+UNKNOWN_MODEL            privacy_public          25   16.0%    4.0%   28.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            safe_contexts           25   64.0%   44.0%   80.0%
+UNKNOWN_MODEL            safe_targets            25   48.0%   32.0%   68.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   31.6%   25.2%   37.6%
+
+
+WildJailbreak:
+========================================================================
+Model                   N      ASR     Bootstrap 95% CI        Wilson 95% CI
+------------------------------------------------------------------------
+gemma_base           2000   59.05%       [56.95, 61.20]       [56.88, 61.19]
+gemma_orpo           2000    3.35%         [2.65, 4.20]         [2.65, 4.23]
+gemma_ra_sft         2000   38.65%       [36.50, 40.40]       [36.54, 40.80]
+gemma_sft            2000   44.00%       [41.80, 46.00]       [41.84, 46.18]
+llama_base           2000   55.50%       [53.30, 57.55]       [53.31, 57.67]
+llama_orpo           2000   21.80%       [20.05, 23.55]       [20.05, 23.66]
+llama_ra_sft         2000   45.25%       [43.05, 47.40]       [43.08, 47.44]
+llama_sft            2000   47.75%       [45.65, 49.85]       [45.57, 49.94]
+========================================================================
+
+Markdown table (bootstrap CI only, for the rebuttal text):
+
+| Checkpoint | ASR | 95% CI |
+|---|---|---|
+| gemma_base | 59.1% | [56.9, 61.2] |
+| gemma_orpo | 3.4% | [2.6, 4.2] |
+| gemma_ra_sft | 38.6% | [36.5, 40.4] |
+| gemma_sft | 44.0% | [41.8, 46.0] |
+| llama_base | 55.5% | [53.3, 57.6] |
+| llama_orpo | 21.8% | [20.1, 23.6] |
+| llama_ra_sft | 45.2% | [43.0, 47.4] |
+| llama_sft | 47.8% | [45.6, 49.9] |
+
+Saved to bootstrap_single_results.json
+
+python bootstrap_strongreject_xstest.py --xstest "D:\MREs_Project\refusal_profile\results\XSTest\raw_files\models_qwen3-base_xstest_full.csv" --n-boot 1000
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+qwen3-sft                dan                     60    1.7%    0.0%    5.0%
+qwen3-sft                disemvowel              60   20.0%   10.0%   31.7%
+qwen3-sft                happy_to_help           60   11.7%    3.3%   20.0%
+qwen3-sft                none                    60    3.3%    0.0%    8.3%
+qwen3-sft                role_play               60    1.7%    0.0%    5.0%
+qwen3-sft                rot_13                  60   13.3%    5.0%   21.7%
+qwen3-sft                wikipedia               60    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+qwen3-sft                   420    7.4%    5.0%   10.0%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25   28.0%   12.0%   44.0%
+UNKNOWN_MODEL            figurative_language     25   80.0%   64.0%   96.0%
+UNKNOWN_MODEL            historical_events       25   48.0%   28.0%   64.0%
+UNKNOWN_MODEL            homonyms                25   68.0%   48.0%   88.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   60.0%   40.0%   80.0%
+UNKNOWN_MODEL            privacy_fictional       25   92.0%   80.0%  100.0%
+UNKNOWN_MODEL            privacy_public          25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            real_group_nons_discr    25   52.0%   32.0%   72.0%
+UNKNOWN_MODEL            safe_contexts           25   96.0%   88.0%  100.0%
+UNKNOWN_MODEL            safe_targets            25   88.0%   76.0%  100.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   62.4%   56.8%   68.0%
+
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+qwen3-ra-sft             dan                     60    1.7%    0.0%    5.0%
+qwen3-ra-sft             disemvowel              60   10.0%    3.3%   18.3%
+qwen3-ra-sft             happy_to_help           60    5.0%    0.0%   11.7%
+qwen3-ra-sft             none                    60    0.0%    0.0%    0.0%
+qwen3-ra-sft             role_play               60    6.7%    1.7%   13.3%
+qwen3-ra-sft             rot_13                  60    6.7%    1.7%   13.3%
+qwen3-ra-sft             wikipedia               60    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+qwen3-ra-sft                420    4.3%    2.6%    6.4%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    0.0%    0.0%    0.0%
+UNKNOWN_MODEL            figurative_language     25   20.0%    4.0%   36.0%
+UNKNOWN_MODEL            historical_events       25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            homonyms                25   20.0%    4.0%   36.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   12.0%    0.0%   28.0%
+UNKNOWN_MODEL            privacy_fictional       25   48.0%   28.0%   68.0%
+UNKNOWN_MODEL            privacy_public          25   44.0%   24.0%   64.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            safe_contexts           25   48.0%   28.0%   68.0%
+UNKNOWN_MODEL            safe_targets            25   28.0%   12.0%   48.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   24.0%   18.4%   29.6%
+
+======================================================================
+ASR (StrongREJECT, is_unsafe) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+qwen3-orpo               dan                     60    0.0%    0.0%    0.0%
+qwen3-orpo               disemvowel              60   18.3%   10.0%   30.0%
+qwen3-orpo               happy_to_help           60    3.3%    0.0%    8.3%
+qwen3-orpo               none                    60    3.3%    0.0%    8.3%
+qwen3-orpo               role_play               60    1.7%    0.0%    5.0%
+qwen3-orpo               rot_13                  60    0.0%    0.0%    0.0%
+qwen3-orpo               wikipedia               60    0.0%    0.0%    0.0%
+
+----------------------------------------------------------------------
+ASR (StrongREJECT, all attacks combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+qwen3-orpo                  420    3.8%    2.1%    5.7%
+
+======================================================================
+ORR (XSTest, over_refusal) bootstrap results (n_boot=1000)
+======================================================================
+Model                    Condition                N   Point  CI_low CI_high
+UNKNOWN_MODEL            definitions             25    4.0%    0.0%   12.0%
+UNKNOWN_MODEL            figurative_language     25   44.0%   24.0%   64.0%
+UNKNOWN_MODEL            historical_events       25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            homonyms                25   48.0%   28.0%   68.0%
+UNKNOWN_MODEL            nons_group_real_discr    25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            privacy_fictional       25   60.0%   40.0%   80.0%
+UNKNOWN_MODEL            privacy_public          25   12.0%    0.0%   24.0%
+UNKNOWN_MODEL            real_group_nons_discr    25    8.0%    0.0%   20.0%
+UNKNOWN_MODEL            safe_contexts           25   68.0%   48.0%   84.0%
+UNKNOWN_MODEL            safe_targets            25   56.0%   36.0%   76.0%
+
+----------------------------------------------------------------------
+ORR (XSTest, all prompt types combined) aggregated across all conditions, per model
+----------------------------------------------------------------------
+Model                         N   Point  CI_low CI_high
+UNKNOWN_MODEL               250   32.0%   26.8%   37.6%
+
+========================================================================
+Model                   N      ASR     Bootstrap 95% CI        Wilson 95% CI
+------------------------------------------------------------------------
+qwen3_ra_sft         2000   36.55%       [34.50, 38.65]       [34.47, 38.68]
+========================================================================
+========================================================================
+Model                   N      ASR     Bootstrap 95% CI        Wilson 95% CI
+------------------------------------------------------------------------
+qwen3_orpo           2000   18.75%       [17.10, 20.50]       [17.10, 20.52]
+qwen3_sft            2000   35.25%       [33.15, 37.35]       [33.19, 37.37]
+========================================================================

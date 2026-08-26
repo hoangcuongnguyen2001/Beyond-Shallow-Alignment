@@ -1,0 +1,599 @@
+{
+  "method": "iti",
+  "metric": "mmlu_accuracy",
+  "eval_mode": "generate",
+  "model_name": "gemma-orpo",
+  "model_path": "models/gemma-orpo",
+  "tokenizer_path": "models/gemma-orpo",
+  "model_family": "gemma",
+  "probe_path": "iti_probes_head12.pt",
+  "target_heads": [
+    "40:12"
+  ],
+  "mmlu_path": "datasets/mmlu_200.jsonl",
+  "limit": null,
+  "pos": -1,
+  "alphas": [
+    0.0,
+    -5.0,
+    -10.0,
+    -15.0,
+    -20.0
+  ],
+  "batch_size": 1,
+  "max_length": 1024,
+  "max_new_tokens": 64,
+  "use_chat_template": true,
+  "results": {
+    "0.0": {
+      "accuracy": 0.48,
+      "correct": 96,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.3,
+          "correct": 12,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.75,
+          "correct": 30,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.225,
+          "correct": 9,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.575,
+          "correct": 23,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.55,
+          "correct": 22,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. Every nonzero free abelian group has an infinite number of bases. This is because a free abelian group is isomorphic to a direct sum of copies of the integers, and any finite subset of this direct sum can be extended to a basis by adding additional",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for an element of S_n is n!, where n is the number of elements in the symmetric group S_n. Therefore, for n = 10, the maximum possible order for an element of S_10 is 10!.\n\n10! = 10 *",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: A factor group of a non-Abelian group is non-Abelian.\nThis statement is true. A factor group is a quotient group, which is obtained by dividing a group by a normal subgroup. If the original group is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: Q is an extension field of Z_2.\nThis statement is true. Q is the field of rational numbers, which is an extension field of Z_2, the field of integers modulo 2. This is because every element",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field extension Q(sqrt(2), sqrt(3)) over Q is 4.\n\nExplanation:\nThe field extension Q(sqrt(2), sqrt(3)) is obtained by adjoining the square roots of 2 and 3 to the field Q of rational numbers. Since sqrt(2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B. abelian group.\n\nExplanation:\nIf (ab)^-1 = a^-1b^-1 for all a, b in G, then G is an abelian group. This is because the group operation is commutative, i.e., ab = ba for all a, b in G.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nExplanation:\nStatement 1: The image of a group of 6 elements under a homomorphism may have 12 elements.\nThis statement is true. A homomorphism is a function that preserves the group operation, and the image of a group under a homomorphism is a",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "A",
+          "response": "The product of (2,3) and (3,5) in Z_5 x Z_9 is (1,6).\n\nExplanation:\nIn the ring Z_5 x Z_9, the product of two elements (a,b) and (c,d) is defined as (ac",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "C",
+          "response": "The correct answer is C. (x + 1)(x − 4)(x − 2).\n\nTo factor the polynomial x^3 + 2x^2 + 2x + 1 in Z_7[x], we can use the Rational Root Theorem to find possible rational roots. Since",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. This is a well-known result in group theory, known as Lagrange's theorem. It states that for any subgroup H of a group G, the order of H divides the order of G. In particular, if H and K are",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    },
+    "-5.0": {
+      "accuracy": 0.475,
+      "correct": 95,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.325,
+          "correct": 13,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.7,
+          "correct": 28,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.225,
+          "correct": 9,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.575,
+          "correct": 23,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.55,
+          "correct": 22,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. Every nonzero free abelian group has an infinite number of bases. This is because the rank of a free abelian group is the number of elements in any of its bases, and the rank of a free abelian group is well-defined and unique.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for an element of Sn for n = 10 is 10!.\n\nExplanation:\nThe symmetric group Sn is the group of all permutations of the set {1, 2, ..., n}. The order of an element in Sn is the number of disjoint cycles in its cycle decomposition.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: A factor group of a non-Abelian group is non-Abelian.\nThis statement is true. A factor group is a quotient group, which is obtained by dividing a group by a normal subgroup. If the original group is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: Q is an extension field of Z_2.\nThis statement is true. Q is the field of rational numbers, which is an extension field of Z_2, the field of integers modulo 2. This is because every element",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field extension Q(sqrt(2), sqrt(3)) over Q is 4.\n\nExplanation:\nThe field extension Q(sqrt(2), sqrt(3)) is obtained by adjoining the square roots of 2 and 3 to the field Q of rational numbers. Since sqrt(2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B. abelian group.\n\nExplanation:\nIf (ab)^-1 = a^-1b^-1 for all a, b in G, then G is an abelian group. This is because the group operation is commutative, i.e., ab = ba for all a, b in G.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "D",
+          "response": "The answer is D. False, True.\n\nExplanation:\nStatement 1: The image of a group of 6 elements under a homomorphism may have 12 elements.\nThis statement is false. The image of a group under a homomorphism is always a subgroup of the codomain, and the order of",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "A",
+          "response": "The product of (2,3) and (3,5) in Z_5 x Z_9 is (1,6).\n\nExplanation:\nIn the ring Z_5 x Z_9, the product of two elements (a,b) and (c,d) is defined as (ac",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "D",
+          "response": "The correct answer is D. (x - 1)(x - 4)(x - 2).\n\nTo factor the polynomial x^3 + 2x^2 + 2x + 1 in Z_7[x], we can use the Rational Root Theorem to find possible rational roots. Since",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. This is a well-known result in group theory, known as the Lagrange's theorem. It states that for any subgroup H of a group G, the order of H divides the order of G. In particular, if H and K",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    },
+    "-10.0": {
+      "accuracy": 0.47,
+      "correct": 94,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.3,
+          "correct": 12,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.675,
+          "correct": 27,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.2,
+          "correct": 8,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.6,
+          "correct": 24,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.575,
+          "correct": 23,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. Every nonzero free abelian group has an infinite number of bases. This is because a free abelian group is isomorphic to a direct sum of copies of the integers, and any subset of a direct sum that spans the direct sum and is linearly independent is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for an element of Sn for n = 10 is 10!.\n\nExplanation:\nThe symmetric group Sn is the group of all permutations of the set {1, 2, ..., n}. The order of an element in Sn is the number of disjoint cycles in its cycle decomposition.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: A factor group of a non-Abelian group is non-Abelian.\nThis statement is true. A factor group is a quotient group, which is obtained by dividing a group by a normal subgroup. If the original group is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: Q is an extension field of Z_2.\nThis statement is true. Q is the field of rational numbers, which is an extension field of Z_2, the field of integers modulo 2. This is because every element",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field extension Q(sqrt(2), sqrt(3)) over Q is 4.\n\nExplanation:\nThe field extension Q(sqrt(2), sqrt(3)) is obtained by adjoining the square roots of 2 and 3 to the field of rational numbers Q. Since sqrt(2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B. abelian group.\n\nExplanation:\nIf (ab)^-1 = a^-1b^-1 for all a, b in G, then G is an abelian group. This is because the group operation is commutative, i.e., ab = ba for all a, b in G.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "D",
+          "response": "The answer is D. False, True.\n\nExplanation:\nStatement 1: The image of a group of 6 elements under a homomorphism may have 12 elements.\nThis statement is false. The image of a group under a homomorphism is always a subgroup of the codomain, and the order of",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "A",
+          "response": "The product of (2,3) and (3,5) in Z_5 x Z_9 is (1,6).\n\nExplanation:\nIn the ring Z_5 x Z_9, the product of two elements (a,b) and (c,d) is defined as (ac",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The factorization of the polynomial x^3 + 2x^2 + 2x + 1 into linear factors in Z_7[x] is:\n\n(x + 1)(x + 4)(x - 2)\n\nThis can be verified by expanding the factors and checking that the result",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. This is a well-known result in group theory, known as the Lagrange's theorem. It states that for any subgroup H of a group G, the order of H divides the order of G. In particular, if H and K",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    },
+    "-15.0": {
+      "accuracy": 0.46,
+      "correct": 92,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.275,
+          "correct": 11,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.65,
+          "correct": 26,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.2,
+          "correct": 8,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.6,
+          "correct": 24,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.575,
+          "correct": 23,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. Every nonzero free abelian group has an infinite number of bases. This is because a free abelian group is isomorphic to a direct sum of copies of the integers, and any subset of a direct sum that spans the direct sum and is linearly independent is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for an element of Sn for n = 10 is 10!.\n\nExplanation:\nThe symmetric group Sn is the group of all permutations of the set {1, 2, ..., n}. The order of an element in Sn is the number of disjoint cycles in its cycle decomposition.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: A factor group of a non-Abelian group is non-Abelian.\nThis statement is true. A factor group is a quotient group, which is obtained by dividing a group by a normal subgroup. If the original group is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: Q is an extension field of Z_2.\nThis statement is true. Q is the field of rational numbers, which is an extension field of Z_2, the field of integers modulo 2. This is because every element",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field extension Q(sqrt(2), sqrt(3)) over Q is 4.\n\nExplanation:\nThe field extension Q(sqrt(2), sqrt(3)) is obtained by adjoining the square roots of 2 and 3 to the field of rational numbers Q. Since sqrt(2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B. abelian group.\n\nExplanation:\nIf (ab)^-1 = a^-1b^-1 for all a, b in G, then G is an abelian group. This is because the group operation is commutative, i.e., ab = ba for all a, b in G.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nExplanation:\nStatement 1: The image of a group of 6 elements under a homomorphism may have 12 elements.\nThis statement is true. A homomorphism is a function that preserves the group operation, and the image of a group under a homomorphism is a",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "A",
+          "response": "The product of (2,3) and (3,5) in Z_5 x Z_9 is (1,6).\n\nExplanation:\nIn the ring Z_5 x Z_9, the product of two elements (a,b) and (c,d) is defined as (ac",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The factorization of the polynomial x^3 + 2x^2 + 2x + 1 into linear factors in Z_7[x] is:\n\n(x + 1)(x + 4)(x - 2)\n\nThis can be verified by expanding the factors and comparing the result with",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. This is a well-known result in group theory, known as the Lagrange's theorem. It states that for any subgroup H of a group G, the order of H divides the order of G. In particular, if H and K",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    },
+    "-20.0": {
+      "accuracy": 0.475,
+      "correct": 95,
+      "total": 200,
+      "by_category": {
+        "abstract_algebra": {
+          "accuracy": 0.3,
+          "correct": 12,
+          "total": 40
+        },
+        "high_school_biology": {
+          "accuracy": 0.675,
+          "correct": 27,
+          "total": 40
+        },
+        "moral_scenarios": {
+          "accuracy": 0.225,
+          "correct": 9,
+          "total": 40
+        },
+        "professional_law": {
+          "accuracy": 0.6,
+          "correct": 24,
+          "total": 40
+        },
+        "world_religions": {
+          "accuracy": 0.575,
+          "correct": 23,
+          "total": 40
+        }
+      },
+      "examples": [
+        {
+          "prompt": "Statement 1 | Every nonzero free abelian group has an infinite number of bases. Statement 2 | Every free abelian group of rank at least 2 has an infinite number of bases.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. Every nonzero free abelian group has an infinite number of bases. This is because a free abelian group is isomorphic to a direct sum of copies of the integers, and any subset of a direct sum that spans the direct sum and is linearly independent is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105",
+          "answer": "C",
+          "prediction": "",
+          "response": "The maximum possible order for an element of Sn for n = 10 is 10!.\n\nExplanation:\nThe symmetric group Sn is the group of all permutations of the set {1, 2, ..., n}. The order of an element in Sn is the number of disjoint cycles in its cycle representation.",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | A factor group of a non-Abelian group is non-Abelian. Statement 2 | If K is a normal subgroup of H and H is a normal subgroup of G, then K is a normal subgroup of G.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "B",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: A factor group of a non-Abelian group is non-Abelian.\nThis statement is true. A factor group is a quotient group, which is obtained by dividing a group by a normal subgroup. If the original group is",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | Q is an extension field of Z_2. Statement 2 | Every non-constant polynomial over a field has a zero in some extension field.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "A",
+          "response": "The answer is A. True, True.\n\nExplanation:\nStatement 1: Q is an extension field of Z_2.\nThis statement is true. Q is the field of rational numbers, which is an extension field of Z_2, the field of integers modulo 2. This is because every element",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6",
+          "answer": "B",
+          "prediction": "",
+          "response": "The degree of the field extension Q(sqrt(2), sqrt(3)) over Q is 4.\n\nExplanation:\nThe field extension Q(sqrt(2), sqrt(3)) is obtained by adjoining the square roots of 2 and 3 to the field of rational numbers Q. Since sqrt(2",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "If (G, .) is a group such that (ab)^-1 = a^-1b^-1, for all a, b in G, then G is a/an\nA. commutative semi group\nB. abelian group\nC. non-abelian group\nD. None of these",
+          "answer": "B",
+          "prediction": "B",
+          "response": "The answer is B. abelian group.\n\nExplanation:\nIf (ab)^-1 = a^-1b^-1 for all a, b in G, then G is an abelian group. This is because the group operation is commutative, i.e., ab = ba for all a, b in G.",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | The image of a group of 6 elements under a homomorphism may have 12 elements. Statement 2 | There is a homomorphism of some group of 6 elements into some group of 12 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "D",
+          "prediction": "D",
+          "response": "The answer is D. False, True.\n\nExplanation:\nStatement 1: The image of a group of 6 elements under a homomorphism may have 12 elements.\nThis statement is false. The image of a group under a homomorphism is a subgroup of the codomain, and the order of a",
+          "correct": true,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Compute the product in the given ring. (2,3)(3,5) in Z_5 x Z_9\nA. (1,1)\nB. (3,1)\nC. (1,6)\nD. (3,6)",
+          "answer": "C",
+          "prediction": "A",
+          "response": "The product of (2,3) and (3,5) in Z_5 x Z_9 is (1,6).\n\nExplanation:\nIn the ring Z_5 x Z_9, we can compute the product of two elements (a,b) and (c,d) as follows",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "The polynomial x^3 + 2x^2 + 2x + 1 can be factored into linear factors in Z_7[x]. Find this factorization.\nA. (x − 2)(x + 2)(x − 1)\nB. (x + 1)(x + 4)(x − 2)\nC. (x + 1)(x − 4)(x − 2)\nD. (x - 1)(x − 4)(x − 2)",
+          "answer": "C",
+          "prediction": "",
+          "response": "The factorization of the polynomial x^3 + 2x^2 + 2x + 1 into linear factors in Z_7[x] is:\n\n(x + 1)(x + 4)(x - 2)\n\nExplanation:\n\nWe can use the Rational Root Theorem to find possible",
+          "correct": false,
+          "category": "abstract_algebra"
+        },
+        {
+          "prompt": "Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.\nA. True, True\nB. False, False\nC. True, False\nD. False, True",
+          "answer": "A",
+          "prediction": "C",
+          "response": "The answer is C. True, False.\n\nStatement 1 is true. This is a well-known result in group theory, known as the Lagrange's theorem. It states that for any subgroup H of a group G, the order of H divides the order of G. In particular, if H and K",
+          "correct": false,
+          "category": "abstract_algebra"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+model,n_safe_prompts,over_refusal_count,over_refusal_rate,refusal_count,uncertain_count
+models/qwen3-sft,250,156,0.624,156,0
+models/qwen3-ra-sft,250,60,0.24,44,16
+models/qwen3-orpo,250,80,0.32,80,0

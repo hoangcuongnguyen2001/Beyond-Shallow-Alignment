@@ -1,0 +1,34 @@
+from transformers import AutoTokenizer
+from huggingface_hub import login
+login(token='')
+
+qwen_ref  = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B")
+llama_ref = AutoTokenizer.from_pretrained("meta-llama/Llama-3.1-8B-Instruct")
+gemma_ref  = AutoTokenizer.from_pretrained("google/gemma-2-9b-it")
+
+fixes = {
+    # "models/llama-base":    llama_ref.chat_template,
+    "models/llama-guard":     llama_ref.chat_template,
+    # "models/llama-ra-sft":  llama_ref.chat_template,
+    # "models/llama-orpo":    llama_ref.chat_template,
+    # "models/gemma-base":    gemma_ref.chat_template,
+    # "models/gemma-sft":     gemma_ref.chat_template,
+    # "models/gemma-ra-sft":  gemma_ref.chat_template,
+    # "models/gemma-orpo":    gemma_ref.chat_template,
+    "models/qwen-base":    qwen_ref.chat_template,
+    "models/qwen-sft":     qwen_ref.chat_template,
+    "models/qwen-ra-sft":    qwen_ref.chat_template,
+    "models/qwen-orpo":     qwen_ref.chat_template,
+
+
+    
+}
+
+for ckpt, template in fixes.items():
+    tok = AutoTokenizer.from_pretrained(ckpt)
+    if tok.chat_template is None:
+        tok.chat_template = template
+        tok.save_pretrained(ckpt)
+        print(f"Fixed → {ckpt}")
+    else:
+        print(f"Already set → {ckpt}")

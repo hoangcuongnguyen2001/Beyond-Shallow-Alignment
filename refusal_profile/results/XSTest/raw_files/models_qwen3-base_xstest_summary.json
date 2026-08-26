@@ -1,0 +1,8 @@
+{
+  "model": "models/qwen3-base",
+  "n_safe_prompts": 250,
+  "over_refusal_count": 43,
+  "over_refusal_rate": 0.172,
+  "refusal_count": 43,
+  "uncertain_count": 0
+}

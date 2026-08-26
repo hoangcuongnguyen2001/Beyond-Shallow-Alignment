@@ -1,0 +1,5 @@
+model,n_safe_prompts,over_refusal_count,over_refusal_rate,refusal_count,uncertain_count
+models/llama-base,250,15,0.06,10,5
+models/llama-sft,250,149,0.596,145,4
+models/llama-ra-sft,250,107,0.428,105,2
+models/llama-orpo,250,86,0.344,86,0

@@ -1,0 +1,134 @@
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/gemma-sft   --model_name gemma-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-sft/directions.pt   --peak_layer 41   --target_layers 41 40 39 38 37   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/gemma-sft
+Loading tokenizer: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 135.47it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-sft/directions.pt
+phase1/gemma-sft/directions.pt: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 620k/620k [00:02<00:00, 307kB/s]
+Saved steering vector → results/phase3/vectors/gemma-sft_layer41_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [00:35<00:00,  5.64it/s]
+MMLU Accuracy: 0.5350
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [00:33<00:00,  5.92it/s]
+MMLU Accuracy: 0.5400
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [00:32<00:00,  6.16it/s]
+MMLU Accuracy: 0.5550
+Saved final results → results/phase3/gemma-sft_mmlu_results.json
+
+(main) root@C.36921856:/workspace$ python actadd_vectors.py   --model_path models/gemma-sft   --model_name gemma-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-sft/directions.pt   --peak_layer 41   --target_layers 41 40 39 38 37   --mmlu_prompts datasets/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/gemma-sft
+Loading tokenizer: models/gemma-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 212.61it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-sft/directions.pt
+Saved steering vector → results/phase3/vectors/gemma-sft_layer41_vector.pt
+
+Running MMLU with α=15.0
+MMLU α=15.0:   0%|                                                                                                                                            | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [02:49<00:00,  1.18it/s]
+MMLU Accuracy: 0.5550
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [02:35<00:00,  1.29it/s]
+MMLU Accuracy: 0.5550
+
+Saved final results → results/phase3/gemma-sft_mmlu_results.json
+
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-orpo/directions.pt   --peak_layer 41   --target_layers 41 40 39 38 37   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/gemma-orpo
+Loading tokenizer: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 155.19it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-orpo/directions.pt
+Saved steering vector → results/phase3/vectors/gemma-orpo_layer41_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:27<00:00,  3.44s/it]
+MMLU Accuracy: 0.4500
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:43<00:00,  3.52s/it]
+MMLU Accuracy: 0.4550
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:53<00:00,  3.57s/it]
+MMLU Accuracy: 0.4400
+
+Saved final results → results/phase3/gemma-orpo_mmlu_results.json
+
+python actadd_vectors.py   --model_path models/gemma-orpo   --model_name gemma-orpo   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-orpo/directions.pt   --peak_layer 41   --target_layers 41 40 39 38 37   --mmlu_prompts datasets/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/gemma-orpo
+Loading tokenizer: models/gemma-orpo
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 195.06it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-orpo/directions.pt
+phase1/gemma-orpo/directions.pt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 620k/620k [00:01<00:00, 383kB/s]
+Saved steering vector → results/phase3/vectors/gemma-orpo_layer41_vector.pt
+
+Running MMLU with α=15.0
+MMLU α=15.0:   0%|                                                                                                                                            | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [12:38<00:00,  3.79s/it]
+MMLU Accuracy: 0.4550
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [12:50<00:00,  3.85s/it]
+MMLU Accuracy: 0.4700
+
+Saved final results → results/phase3/gemma-orpo_mmlu_results.json
+
+(main) root@C.36447375:/workspace$ python actadd_vectors.py   --model_path models/gemma-ra-sft   --model_name gemma-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-ra-sft/directions.pt   --peak_layer 27   --target_layers 27 37 28 40 39   --mmlu_prompts data/mmlu_200.jsonl    --output_dir results/phase3
+Loading model: models/gemma-ra-sft
+Loading tokenizer: models/gemma-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:03<00:00, 147.37it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-ra-sft/directions.pt
+phase1/gemma-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 620k/620k [00:02<00:00, 307kB/s]
+Saved steering vector → results/phase3/vectors/gemma-ra-sft_layer27_vector.pt
+
+Running MMLU with α=0.0
+MMLU α=0.0:   0%|                                                                                                                                             | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=0.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [23:26<00:00,  7.03s/it]
+MMLU Accuracy: 0.4100
+
+Running MMLU with α=5.0
+MMLU α=5.0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [23:27<00:00,  7.04s/it]
+MMLU Accuracy: 0.4400
+
+Running MMLU with α=10.0
+MMLU α=10.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [23:20<00:00,  7.00s/it]
+MMLU Accuracy: 0.4000
+
+Saved final results → results/phase3/gemma-ra-sft_mmlu_results.json
+(main) root@C.36921856:/workspace$ python actadd_vectors.py   --model_path models/gemma-ra-sft   --model_name gemma-ra-sft   --direction_repo HoangCuongNguyen/refusal-direction-results   --direction_filename phase1/gemma-ra-sft/directions.pt   --peak_layer 27   --target_layers 27 37 28 40 39   --mmlu_prompts datasets/mmlu_200.jsonl    --output_dir results/phase3
+
+Loading model: models/gemma-ra-sft
+Loading tokenizer: models/gemma-ra-sft
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['cache_implementation']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 464/464 [00:02<00:00, 191.78it/s]
+Loading direction from HoangCuongNguyen/refusal-direction-results / phase1/gemma-ra-sft/directions.pt
+phase1/gemma-ra-sft/directions.pt: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 620k/620k [00:00<00:00, 757kB/s]
+Saved steering vector → results/phase3/vectors/gemma-ra-sft_layer27_vector.pt
+
+Running MMLU with α=15.0
+MMLU α=15.0:   0%|                                                                                                                                            | 0/200 [00:00<?, ?it/s][transformers] The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MMLU α=15.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [24:24<00:00,  7.32s/it]
+MMLU Accuracy: 0.4200
+
+Running MMLU with α=20.0
+MMLU α=20.0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [24:20<00:00,  7.30s/it]
+MMLU Accuracy: 0.4050
+
+Saved final results → results/phase3/gemma-ra-sft_mmlu_results.json
