@@ -95,7 +95,5 @@ publisher = "Association for Computational Linguistics"
 
 ## Acknowledgements
 
-This research was supported by the Macquarie University Data Horizons
-Research Centre, the Australian Government through the Commonwealth-funded
-Research Training Program (RTP) Stipend Scholarship, and the Macquarie
-University Research Excellence Tuition Scholarship.
+This research was supported by the International Macquarie
+University Research Excellence Scholarship.
