@@ -88,7 +88,8 @@ booktitle = "Proceedings of the 2026 Conference on Empirical Methods in Natural 
 series = {EMNLP~’2026},     
 NOmonth = oct,     
 year = "2026",     
-address = "Budapest, Hungary",     
+address = "Budapest, Hungary",
+url = "https://arxiv.org/abs/2609.03887",     
 publisher = "Association for Computational Linguistics"
 }
 ```
